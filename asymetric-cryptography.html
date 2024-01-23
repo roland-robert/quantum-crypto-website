@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cryptographie Quantique</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body class="homepage is-preload">
+    <div id="page-wrapper">
+      <!-- Header -->
+      <div id="header-wrapper">
+        <div class="container">
+          <!-- Header -->
+          <header id="header">
+            <div class="inner">
+              <!-- Logo -->
+              <h1><a href="index.html" id="logo">CrypTum</a></h1>
+
+              <!-- Nav -->
+              <nav id="nav">
+                <ul>
+                  <li>
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li class="current_page_item">
+                    <a href="#">Cryptographie Asymétrique</a>
+                    <ul>
+                      <li><a href="asymetric-cryptography.html#asymetric-cryptography-general-principle">Principe général</a></li>
+                      <li><a href="#">Magna phasellus</a></li>
+                      <li>
+                        <a href="#">Phasellus consequat</a>
+                        <ul>
+                          <li><a href="#">Lorem ipsum dolor</a></li>
+                          <li><a href="#">Phasellus consequat</a></li>
+                          <li><a href="#">Magna phasellus</a></li>
+                          <li><a href="#">Etiam dolore nisl</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Veroeros feugiat</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+        </div>
+      </div>
+      <!-- Main Wrapper -->
+      <div id="main-wrapper">
+        <div class="wrapper style2">
+          <div class="inner">
+            <!-- Feature 2 -->
+            <section class="container box feature2">
+              <div class="row">
+                <div class="col-12">
+                  <header class="first major">
+                    <h2>Cryptographie Asymétrique</h2>
+                  </header>
+                  <p>
+                    La cryptographie asymétrique, également connue sous le nom de cryptographie à clé publique,
+                    constitue l'un des piliers fondamentaux de la sécurité des communications numériques.
+                    Contrairement à la cryptographie symétrique, où une seule clé est utilisée à la fois pour le chiffrement et le déchiffrement,
+                    la cryptographie asymétrique repose sur l'utilisation de paires de clés distinctes, l'une publique et l'autre privée.
+                    <br>
+                    Bien que la cryptographie symétrique soit plus facile à comprendre et à déployer,
+                    elle présente le défi fondamental du partage de clé entre les parties communicantes.
+                    Dans le contexte d'Internet, où les communications sont exposées au risque d'interception,
+                    le partage direct de clés devient non trivial et pose des problèmes de sécurité. Par conséquent,
+                    la cryptographie symétrique est souvent associée à un mécanisme de partage de clé sécurisé,
+                    généralement instauré par un protocole de "handshake", qui est lui-même basé sur des principes
+                    de cryptographie asymétrique.
+                  </p>
+                  <h3 id="asymetric-cryptography-general-principle">Principe général</h3>
+                  <p>
+                    Comme convention dans la majorité de la litérature, on prend comme exemple deux personnages Alice et Bob qui souhaitent communiquer.
+                    Le problème c'est que tout le monde peut entendre ce qu'ils disent, mais ils veulent garder leur conversation secrète.
+                    <br>
+                    <br>
+                    Pour résoudre ce problème, Alice et Bob se créé chacun une clé publique et privée (qui ne sont en réalité rien d'autre que des entiers spécifiques).
+                    Avec la clé publique de quelqu'un, il est possible de chiffrer un message que seul la clé privée associée à la clé publique peut déchiffrer.
+                    Ainsi les clés publiques peuvent être communiquées à tout le monde, et Bob peut envoyer un message chiffré à Alice, qu'elle seule pourra lire.
+                    <br>
+                    <br>
+                    Dans la beaucoup de cas, la clé publique est un grand nombre entier, produit de 2 ou plus facteurs premiers.
+                    La clé privée n'est rien d'autre que la connaissance de ces deux facteurs premiers. Créer un couple (Clé publique, Clé privée)
+                    est donc très simple, il suffit de pondre 2 grands nombres premiers et de les multiplier.
+                    Cependant, en chemin inverse, trouver les 2 facteurs premier d'un grand nombre est actuellement en complexité exponentielle.
+                    <br>
+                    <br>
+                    C'est principalement ce type de système de chiffrement qui est à risque d'être innéficace face à l'arrivée des ordinateurs quantiques.
+                  </p>
+
+                </div>
+              </div>
+            </section>
+            <!-- Feature 2 -->
+            <section class="container box feature2">
+              <div class="row">
+                <div class="col-12">
+                  <canvas id="rsaGameCanvas" width="800" height="400"></canvas>
+                  <br>
+                  <div class="input-divs">
+                    <div class="one-input">
+                      <p>Prime p</p>
+                      <input type="number" id="prime_number_p">
+                      <p class="error-p" id="prime_number_p_error">&nbsp;</p>
+                    </div>
+                    <div class="one-input">
+                      <p>Prime q</p>
+                      <input type="number" id="prime_number_q">
+                      <p class="error-p" id="prime_number_q_error">&nbsp;</p>
+                    </div>
+                    <div hidden class="one-input-e" id="div_number_e">
+                      <p>Prime e</p>
+                      <input type="number" id="number_e">
+                      <p class="error-p" id="number_e_error">&nbsp;</p>
+                    </div>
+                  </div>
+                  <script src="assets/js/RSA_game.js"></script>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+      </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Wrapper -->
+      <div id="footer-wrapper">
+        <footer id="footer" class="container">
+            <div class="col-12">
+              <div id="copyright">
+                <ul class="menu">
+                  <li>&copy; Untitled. All rights reserved</li>
+                  <li>Github: <a href="https://github.com/roland-robert/">here</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
