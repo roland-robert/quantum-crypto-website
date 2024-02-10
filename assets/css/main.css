@@ -116,6 +116,11 @@ body {
 
 ol,
 ul {
+  list-style: inside;
+}
+
+#header ol,
+ul {
   list-style: none;
 }
 
@@ -263,7 +268,7 @@ h3 {
 
 b,
 strong {
-  color: #404248;
+  color: #ccc;
   font-weight: 700;
 }
 
@@ -1817,7 +1822,7 @@ ol.default li {
   padding: 0 0 0 1em;
 }
 canvas {
-  background: #eee;
+  background: #ddd;
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
@@ -2686,4 +2691,31 @@ canvas {
     margin-top: 0;
     padding: 3em 0 1em 0;
   }
+}
+
+.math-block {
+  font-size: 16px;
+}
+
+.vertical-aligned-figures {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.vertical-aligned-figures figure {
+  margin: 10;
+}
+
+.vertical-aligned-figures img {
+  border-radius: 10px;
+  width: 80%;
+}
+
+.vertical-aligned-figures figcaption {
+  margin-top: 0px;
+}
+
+#rsaGameCanvas {
+  border-radius: 10px;
 }

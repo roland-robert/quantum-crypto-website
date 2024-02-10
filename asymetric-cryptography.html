@@ -43,6 +43,26 @@
                       <li><a href="#">Veroeros feugiat</a></li>
                     </ul>
                   </li>
+                  <li>
+                    <a href="quantum-computers.html">Ordinateurs quantique</a>
+                    <ul>
+                      <li><a href="quantum-computers.html">Principe général</a></li>
+                      <li><a href="#">Magna phasellus</a></li>
+                      <li>
+                        <a href="#">Phasellus consequat</a>
+                        <ul>
+                          <li><a href="#">Lorem ipsum dolor</a></li>
+                          <li><a href="#">Phasellus consequat</a></li>
+                          <li><a href="#">Magna phasellus</a></li>
+                          <li><a href="#">Etiam dolore nisl</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Veroeros feugiat</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="bibliography.html">Bibliographie</a>
+                  </li>
                 </ul>
               </nav>
             </div>
@@ -74,18 +94,80 @@
                     généralement instauré par un protocole de "handshake", qui est lui-même basé sur des principes
                     de cryptographie asymétrique.
                   </p>
+                  <div class="vertical-aligned-figures">
+                    <figure>
+                      <img src="images/symetric_encryption.png" alt="symmetric_encryption.png">
+                      <figcaption>Fig.1 - Symmetric Encryption</figcaption>
+                    </figure>
+                  
+                    <figure>
+                      <img src="images/asymetric_encryption.png" alt="asymmetric_encryption.png">
+                      <figcaption>Fig.2 - Asymmetric Encryption</figcaption>
+                    </figure>
+                  </div>
                   <h3 id="asymetric-cryptography-general-principle">Principe général</h3>
                   <p>
-                    Comme convention dans la majorité de la litérature, on prend comme exemple deux personnages Alice et Bob qui souhaitent communiquer.
-                    Le problème c'est que tout le monde peut entendre ce qu'ils disent, mais ils veulent garder leur conversation secrète.
+                    Deux partis souhaitent communiquer secrètement. Cependant n'importe qui peut entendre ce qu'ils envoient, comme c'est souvent le cas sur internet.
+                    C'est pourquoi, une méthode de cryptographie symétrique ne peut pas être suffisant car ils n'ont pas de moyen sécuriser de se partager une clé commune.
                     <br>
                     <br>
-                    Pour résoudre ce problème, Alice et Bob se créé chacun une clé publique et privée (qui ne sont en réalité rien d'autre que des entiers spécifiques).
-                    Avec la clé publique de quelqu'un, il est possible de chiffrer un message que seul la clé privée associée à la clé publique peut déchiffrer.
-                    Ainsi les clés publiques peuvent être communiquées à tout le monde, et Bob peut envoyer un message chiffré à Alice, qu'elle seule pourra lire.
+                    Pour ce faire, chaque parti se fabriquent deux clé, une publique et une privée, ce couple de clé sont relié par une certaine propriété
+                    (dans les cas qui nous intéressent comme le chiffrement RSA, la clé privée est équivalent à la décomposition en facteurs premier de la clé publique).
+
+                    Un message peut alors être chiffrer par la clé publique (n'importe qui peut le faire), et déchiffré uniquement avec la clé privée (seul le propriétaire peut le faire).
+                    
+                    <br>
+                    Une propriété très répandue est la commutativité du chiffrement et du déchiffrement,
+                     ce qui permet de signer un message. D représente le processus de chiffrement (avec clé publique), E le processus de déchiffrement (avec clé privée).
                     <br>
                     <br>
-                    Dans la beaucoup de cas, la clé publique est un grand nombre entier, produit de 2 ou plus facteurs premiers.
+
+                    <math display="block" class="math-block">
+                      <mrow>
+                        <mi>D</mi>
+                        <mo form="prefix" stretchy="false">(</mo>
+                        <mi>E</mi>
+                        <mo form="prefix" stretchy="false">(</mo>
+                        <mi>M</mi>
+                        <mo form="postfix" stretchy="false">)</mo>
+                        <mo form="postfix" stretchy="false">)</mo>
+                        <mo>=</mo>
+                        <mi>E</mi>
+                        <mo form="prefix" stretchy="false">(</mo>
+                        <mi>D</mi>
+                        <mo form="prefix" stretchy="false">(</mo>
+                        <mi>M</mi>
+                        <mo form="postfix" stretchy="false">)</mo>
+                        <mo form="postfix" stretchy="false">)</mo>
+                        <mo>=</mo>
+                        <mi>M</mi>
+                      </mrow>
+                    </math>
+
+
+                    Dans ces cas, il est très simple de signer un message M, et on envoie le message signé S qui est le message M, déchiffré: 
+                    <br>
+                    <br>
+                    <math display="block" class="math-block">
+                      <mrow>
+                        <mi>S</mi>
+                        <mo>=</mo>
+                        <msub>
+                          <mi>D</mi>
+                          <mi>2</mi>
+                        </msub>
+                        <mo form="prefix" stretchy="false">(</mo>
+                        <mi>M</mi>
+                        <mo form="postfix" stretchy="false">)</mo>
+                      </mrow>
+                    </math>
+                    
+
+                    Il est alors très simple de déduire le message M de S en chiffrant S avec la clé publique 2, mais il faut posséder la clé privée 2 pour déduire S de M, garantissant ainsi l'origine du message.
+                  
+                    <br>
+                    <br>
+                    Dans beaucoup de cas, la clé publique est un grand nombre entier, produit de 2 ou plus facteurs premiers.
                     La clé privée n'est rien d'autre que la connaissance de ces deux facteurs premiers. Créer un couple (Clé publique, Clé privée)
                     est donc très simple, il suffit de pondre 2 grands nombres premiers et de les multiplier.
                     Cependant, en chemin inverse, trouver les 2 facteurs premier d'un grand nombre est actuellement en complexité exponentielle.
@@ -93,7 +175,83 @@
                     <br>
                     C'est principalement ce type de système de chiffrement qui est à risque d'être innéficace face à l'arrivée des ordinateurs quantiques.
                   </p>
+                  <h3 id="asymetric-cryptography-RSA">Chiffrement RSA </h3>
+                  Le chiffrement RSA est l'exemple le plus classique de chiffrement asymétrique.
+                  Il nous intéresse particulièrement car il fait partie des systèmes de chiffrement qui peuvent être résolus par des ordinateur
+                  quantiques, car il se base sur le principe que trouver les facteurs d'un nombre premier est en complexité exponentielle.
+                  <br>
+                  <br>
+                  <h4>Création d'un couple clé publique et clé privée</h4>
 
+                  <ol>
+                    <li>Sélectionner deux nombres premiers distincts, notés <math>p</math> et <math>q</math>.</li>
+                    <li><math>n = pq</math>, sera le module de chiffrement.</li>
+                    <li>Calculer <math>φ(n) = (p - 1)(q - 1)</math>, l'indicatrice d'Euler associée à <math>n</math>.</li>
+                    <li>Choisir un entier naturel <math>e</math> qui est premier avec <math>φ(n)</math> de préférence strictement inférieur à <math>φ(n)</math>; cet entier sera l'exposant de chiffrement.</li>
+                    <li>Calculer l'entier naturel <math>d</math>, l'inverse modulaire de <math>e</math> modulo <math>φ(n)</math>, également strictement inférieur à <math>φ(n)</math>. L'algorithme d'Euclide étendu peut être utilisé pour calculer efficacement <math>d</math> (c'est l'algorithme utilisé dans la simulation ci-dessous). Ce dernier sera l'exposant de déchiffrement.</li>
+                  </ol>
+
+                  Ensuite, n (module de chiffrement) et e (exposant de chiffrement) pourront être partagés, c'est la clé publique, et d (exposant de déchiffrement) sera gardé secret c'est la clé privée.
+                   
+                  <br>
+                   <br>
+                   <h4>Chiffrement, déchiffrement et signature</h4>
+
+                   Pour un message <math display="inline" class="tml-display" style="display:block math;">
+                    <mrow>
+                      <mi>M</mi>
+                      <mo>∈</mo>
+                      <mi>ℕ</mi>
+                    </mrow>
+                  </math>, pour un déstinataire B, le message M chiffré est : <math display="inline" class="tml-display" style="display:block math;">
+                    <mrow>
+                      <mi>C</mi>
+                      <mo>=</mo>
+                      <msup>
+                        <mi>M</mi>
+                        <mi>e</mi>
+                      </msup>
+                      <mo form="prefix" stretchy="false">[</mo>
+                      <mi>n</mi>
+                      <mo form="postfix" stretchy="false">]</mo>
+                    </mrow>
+                  </math>, ensuite en utilisant la propriété <math display="inline" class="tml-display" style="display:block math;">
+                    <mrow>
+                      <msup>
+                        <mi>M</mi>
+                        <mrow>
+                          <mi>e</mi>
+                          <mi>d</mi>
+                        </mrow>
+                      </msup>
+                      <mo form="prefix" stretchy="false">[</mo>
+                      <mi>n</mi>
+                      <mo form="postfix" stretchy="false">]</mo>
+                      <mo>=</mo>
+                      <mi>M</mi>
+                    </mrow>
+                  </math> le déchiffrement se fait tout seul (si M < n) (démonstration <strong><a style="text-decoration: none;" href="bibliography.html#biblio_6">[6]</a></strong>). Les modules de chiffrement et de déchiffrement sont interchangeables.
+                  <br>
+                  Pour signer un message, on déchiffre nous même le message avec notre clé privée, et on envoie ce message déchiffré au destinataire comme un message normal.
+                  Le destinataire pourra alors déduire le message initial du message signé avec votre clé privée, et ainsi être sûr qu'il provient de vous.
+                  <br>
+
+                  Plus de détails sur l'algorithme de chiffrement RSA : <strong><a style="text-decoration: none;" href="bibliography.html#biblio_3">[3]</a></strong>
+                  
+                  <h3 id="asymetric-cryptography-RSA-game">Simulation RSA intéractif</h3>
+                  Choisissez d'abord deux nombres premiers p et q.
+            
+                  <br>
+                  Ensuite choisissez votre exposant de chiffrement e premier avec l'indicatrice d'Euler (si vous échouez, un e vous sera proposé).
+                  <br>
+                  Enfin choisissez un message à envoyer (votre message devrait être un entier inférieur à la clé publique de Bob nBob = 360823068887)
+                  <br>
+                  Bob vous envoie aussi un message que vous déchiffre avec votre clé d. Le message de Bob est, le premier chiffre de la séquence 1, 12, 123, 1234 inférieur à votre n.
+                  <br>
+                  Le message entier peut alors être converti en chaine de caractères avec le décodage ASCII, utf-8 etc..., non montré ici.
+                  <br>
+                  <br>
+                  <br>
                 </div>
               </div>
             </section>
@@ -115,9 +273,14 @@
                       <p class="error-p" id="prime_number_q_error">&nbsp;</p>
                     </div>
                     <div hidden class="one-input-e" id="div_number_e">
-                      <p>Prime e</p>
+                      <p>Nombre e</p>
                       <input type="number" id="number_e">
                       <p class="error-p" id="number_e_error">&nbsp;</p>
+                    </div>
+                    <div hidden class="one-input-e" id="div_message_input">
+                      <p>Message à envoyer</p>
+                      <input type="number" id="message_input">
+                      <p class="error-p" id="message_error">&nbsp;</p>
                     </div>
                   </div>
                   <script src="assets/js/RSA_game.js"></script>
@@ -140,7 +303,7 @@
               <div id="copyright">
                 <ul class="menu">
                   <li>&copy; Untitled. All rights reserved</li>
-                  <li>Github: <a href="https://github.com/roland-robert/">here</a></li>
+                  <li>Github: <a href="https://github.com/roland-robert/quantum-crypto-website">here</a></li>
                 </ul>
               </div>
             </div>
