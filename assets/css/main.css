@@ -1532,6 +1532,15 @@ table.default thead {
 .homeimages {
   height: 215px;
 }
+#logo {
+  position: absolute;
+  left: 2em;
+  top: 0;
+  line-height: 9em;
+}
+#img-logo {
+  height: 65px;
+}
 
 .image.left {
   float: left;
