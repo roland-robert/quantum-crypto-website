@@ -2732,3 +2732,77 @@ canvas {
 #rsaGameCanvas {
   border-radius: 10px;
 }
+
+.container-tab-22 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  margin: 5px;
+}
+.block-tab-22 {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.figure-2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.figure-centered {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.figure-centered img {
+  border-radius: 10px;
+  width: 80%;
+}
+.figure-2 figure {
+  margin: 10;
+}
+
+.figure-2 img {
+  border-radius: 10px;
+  width: 50%;
+}
+
+.figure-2 figcaption {
+  margin-top: 0px;
+}
+
+.ol-tab {
+  margin-left: 10px;
+}
+.li-tab {
+  margin-left: 10px;
+}
+
+.container-ab3 {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-block-ab3 {
+  flex: 1;
+  margin-right: 0px;
+}
+
+.image-block-ab3 figure {
+  margin: 0;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.image-block-ab3 figcaption {
+  margin-top: 2px;
+}
+.image-block-ab3 img {
+  width: 80%;
+}
+
+.text-block-ab3 {
+  flex: 1;
+}

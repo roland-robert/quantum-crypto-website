@@ -1,302 +1,371 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cryptographie Quantique</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link rel="stylesheet" href="assets/css/main.css" />
-  </head>
-  <body class="homepage is-preload">
-    <div id="page-wrapper">
-      <!-- Header -->
-      <div id="header-wrapper">
-        <div class="container">
-          <!-- Header -->
-          <header id="header">
-            <div class="inner">
-              <!-- Logo -->
-              <a href="index.html" id="logo"><img id="img-logo" src="images/logo-quantum-2.png"></a>
 
-              <!-- Nav -->
-              <nav id="nav">
-                <ul>
-                  <li>
-                    <a href="index.html">Home</a>
-                  </li>
-                  <li class="current_page_item">
-                    <a href="#">Cryptographie Asymétrique</a>
-                    <ul>
-                      <li><a href="asymetric-cryptography.html#asymetric-cryptography-general-principle">Principe général</a></li>
-                      <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA">Chiffrement RSA</a></li>
-                      <li>
-                        <a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive RSA</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="quantum-computers.html">Ordinateurs quantique</a>
-                  </li>
-                  <li>
-                    <a href="bibliography.html">Bibliographie</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </header>
-        </div>
-      </div>
-      <!-- Main Wrapper -->
-      <div id="main-wrapper">
-        <div class="wrapper style2">
+<head>
+  <title>Cryptographie Quantique</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="homepage is-preload">
+  <div id="page-wrapper">
+    <!-- Header -->
+    <div id="header-wrapper">
+      <div class="container">
+        <!-- Header -->
+        <header id="header">
           <div class="inner">
-            <!-- Feature 2 -->
-            <section class="container box feature2">
-              <div class="row">
-                <div class="col-12">
-                  <header class="first major">
-                    <h2>Cryptographie Asymétrique</h2>
-                  </header>
-                  <p>
-                    La cryptographie asymétrique, également connue sous le nom de cryptographie à clé publique,
-                    constitue l'un des piliers fondamentaux de la sécurité des communications numériques.
-                    Contrairement à la cryptographie symétrique, où une seule clé est utilisée à la fois pour le chiffrement et le déchiffrement,
-                    la cryptographie asymétrique repose sur l'utilisation de paires de clés distinctes, l'une publique et l'autre privée.
-                    <br>
-                    Bien que la cryptographie symétrique soit plus facile à comprendre et à déployer,
-                    elle présente le défi fondamental du partage de clé entre les parties communicantes.
-                    Dans le contexte d'Internet, où les communications sont exposées au risque d'interception,
-                    le partage direct de clés devient non trivial et pose des problèmes de sécurité. Par conséquent,
-                    la cryptographie symétrique est souvent associée à un mécanisme de partage de clé sécurisé,
-                    généralement instauré par un protocole de "handshake", qui est lui-même basé sur des principes
-                    de cryptographie asymétrique.
-                  </p>
-                  <div class="vertical-aligned-figures">
-                    <figure>
-                      <img src="images/symetric_encryption.png" alt="symmetric_encryption.png">
-                      <figcaption>Fig.1 - Symmetric Encryption</figcaption>
-                    </figure>
-                  
-                    <figure>
-                      <img src="images/asymetric_encryption.png" alt="asymmetric_encryption.png">
-                      <figcaption>Fig.2 - Asymmetric Encryption</figcaption>
-                    </figure>
-                  </div>
-                  <h3 id="asymetric-cryptography-general-principle">Principe général</h3>
-                  <p>
-                    Deux partis souhaitent communiquer secrètement. Cependant n'importe qui peut entendre ce qu'ils envoient, comme c'est souvent le cas sur internet.
-                    C'est pourquoi, une méthode de cryptographie symétrique ne peut pas être suffisant car ils n'ont pas de moyen sécuriser de se partager une clé commune.
-                    <br>
-                    <br>
-                    Pour ce faire, chaque parti se fabriquent deux clé, une publique et une privée, ce couple de clé sont relié par une certaine propriété
-                    (dans les cas qui nous intéressent comme le chiffrement RSA, la clé privée est équivalent à la décomposition en facteurs premier de la clé publique).
-
-                    Un message peut alors être chiffrer par la clé publique (n'importe qui peut le faire), et déchiffré uniquement avec la clé privée (seul le propriétaire peut le faire).
-                    
-                    <br>
-                    Une propriété très répandue est la commutativité du chiffrement et du déchiffrement,
-                     ce qui permet de signer un message. D représente le processus de chiffrement (avec clé publique), E le processus de déchiffrement (avec clé privée).
-                    <br>
-                    <br>
-
-                    <math display="block" class="math-block">
-                      <mrow>
-                        <mi>D</mi>
-                        <mo form="prefix" stretchy="false">(</mo>
-                        <mi>E</mi>
-                        <mo form="prefix" stretchy="false">(</mo>
-                        <mi>M</mi>
-                        <mo form="postfix" stretchy="false">)</mo>
-                        <mo form="postfix" stretchy="false">)</mo>
-                        <mo>=</mo>
-                        <mi>E</mi>
-                        <mo form="prefix" stretchy="false">(</mo>
-                        <mi>D</mi>
-                        <mo form="prefix" stretchy="false">(</mo>
-                        <mi>M</mi>
-                        <mo form="postfix" stretchy="false">)</mo>
-                        <mo form="postfix" stretchy="false">)</mo>
-                        <mo>=</mo>
-                        <mi>M</mi>
-                      </mrow>
-                    </math>
-
-
-                    Dans ces cas, il est très simple de signer un message M, et on envoie le message signé S qui est le message M, déchiffré: 
-                    <br>
-                    <br>
-                    <math display="block" class="math-block">
-                      <mrow>
-                        <mi>S</mi>
-                        <mo>=</mo>
-                        <msub>
-                          <mi>D</mi>
-                          <mi>2</mi>
-                        </msub>
-                        <mo form="prefix" stretchy="false">(</mo>
-                        <mi>M</mi>
-                        <mo form="postfix" stretchy="false">)</mo>
-                      </mrow>
-                    </math>
-                    
-
-                    Il est alors très simple de déduire le message M de S en chiffrant S avec la clé publique 2, mais il faut posséder la clé privée 2 pour déduire S de M, garantissant ainsi l'origine du message.
-                  
-                    <br>
-                    <br>
-                    Dans beaucoup de cas, la clé publique est un grand nombre entier, produit de 2 ou plus facteurs premiers.
-                    La clé privée n'est rien d'autre que la connaissance de ces deux facteurs premiers. Créer un couple (Clé publique, Clé privée)
-                    est donc très simple, il suffit de pondre 2 grands nombres premiers et de les multiplier.
-                    Cependant, en chemin inverse, trouver les 2 facteurs premier d'un grand nombre est actuellement en complexité exponentielle.
-                    <br>
-                    <br>
-                    C'est principalement ce type de système de chiffrement qui est à risque d'être innéficace face à l'arrivée des ordinateurs quantiques.
-                  </p>
-                  <h3 id="asymetric-cryptography-RSA">Chiffrement RSA </h3>
-                  Le chiffrement RSA est l'exemple le plus classique de chiffrement asymétrique.
-                  Il nous intéresse particulièrement car il fait partie des systèmes de chiffrement qui peuvent être résolus par des ordinateur
-                  quantiques, car il se base sur le principe que trouver les facteurs d'un nombre premier est en complexité exponentielle.
-                  <br>
-                  <br>
-                  <h4>Création d'un couple clé publique et clé privée</h4>
-
-                  <ol>
-                    <li>Sélectionner deux nombres premiers distincts, notés <math>p</math> et <math>q</math>.</li>
-                    <li><math>n = pq</math>, sera le module de chiffrement.</li>
-                    <li>Calculer <math>φ(n) = (p - 1)(q - 1)</math>, l'indicatrice d'Euler associée à <math>n</math>.</li>
-                    <li>Choisir un entier naturel <math>e</math> qui est premier avec <math>φ(n)</math> de préférence strictement inférieur à <math>φ(n)</math>; cet entier sera l'exposant de chiffrement.</li>
-                    <li>Calculer l'entier naturel <math>d</math>, l'inverse modulaire de <math>e</math> modulo <math>φ(n)</math>, également strictement inférieur à <math>φ(n)</math>. L'algorithme d'Euclide étendu peut être utilisé pour calculer efficacement <math>d</math> (c'est l'algorithme utilisé dans la simulation ci-dessous). Ce dernier sera l'exposant de déchiffrement.</li>
-                  </ol>
-
-                  Ensuite, n (module de chiffrement) et e (exposant de chiffrement) pourront être partagés, c'est la clé publique, et d (exposant de déchiffrement) sera gardé secret c'est la clé privée.
-                   
-                  <br>
-                   <br>
-                   <h4>Chiffrement, déchiffrement et signature</h4>
-
-                   Pour un message <math display="inline" class="tml-display" style="display:block math;">
-                    <mrow>
-                      <mi>M</mi>
-                      <mo>∈</mo>
-                      <mi>ℕ</mi>
-                    </mrow>
-                  </math>, pour un déstinataire B, le message M chiffré est : <math display="inline" class="tml-display" style="display:block math;">
-                    <mrow>
-                      <mi>C</mi>
-                      <mo>=</mo>
-                      <msup>
-                        <mi>M</mi>
-                        <mi>e</mi>
-                      </msup>
-                      <mo form="prefix" stretchy="false">[</mo>
-                      <mi>n</mi>
-                      <mo form="postfix" stretchy="false">]</mo>
-                    </mrow>
-                  </math>, ensuite en utilisant la propriété <math display="inline" class="tml-display" style="display:block math;">
-                    <mrow>
-                      <msup>
-                        <mi>M</mi>
-                        <mrow>
-                          <mi>e</mi>
-                          <mi>d</mi>
-                        </mrow>
-                      </msup>
-                      <mo form="prefix" stretchy="false">[</mo>
-                      <mi>n</mi>
-                      <mo form="postfix" stretchy="false">]</mo>
-                      <mo>=</mo>
-                      <mi>M</mi>
-                    </mrow>
-                  </math> le déchiffrement se fait tout seul (si M < n) (démonstration <strong><a style="text-decoration: none;" href="bibliography.html#biblio_6">[6]</a></strong>). Les modules de chiffrement et de déchiffrement sont interchangeables.
-                  <br>
-                  Pour signer un message, on déchiffre nous même le message avec notre clé privée, et on envoie ce message déchiffré au destinataire comme un message normal.
-                  Le destinataire pourra alors déduire le message initial du message signé avec votre clé privée, et ainsi être sûr qu'il provient de vous.
-                  <br>
-
-                  Plus de détails sur l'algorithme de chiffrement RSA : <strong><a style="text-decoration: none;" href="bibliography.html#biblio_3">[3]</a></strong>
-                  
-                  <h3 id="asymetric-cryptography-RSA-game">Simulation RSA intéractif</h3>
-                  Choisissez d'abord deux nombres premiers p et q.
-            
-                  <br>
-                  Ensuite choisissez votre exposant de chiffrement e premier avec l'indicatrice d'Euler (si vous échouez, un e vous sera proposé).
-                  <br>
-                  Enfin choisissez un message à envoyer (votre message devrait être un entier inférieur à la clé publique de Bob nBob = 360823068887)
-                  <br>
-                  Bob vous envoie aussi un message que vous déchiffre avec votre clé d. Le message de Bob est, le premier chiffre de la séquence 1, 12, 123, 1234 inférieur à votre n.
-                  <br>
-                  Le message entier peut alors être converti en chaine de caractères avec le décodage ASCII, utf-8 etc..., non montré ici.
-                  <br>
-                  <br>
-                  <br>
-                </div>
-              </div>
-            </section>
-            <!-- Feature 2 -->
-            <section class="container box feature2">
-              <div class="row">
-                <div class="col-12">
-                  <canvas id="rsaGameCanvas" width="800" height="400"></canvas>
-                  <br>
-                  <div class="input-divs">
-                    <div class="one-input">
-                      <p>Prime p</p>
-                      <input type="number" id="prime_number_p">
-                      <p class="error-p" id="prime_number_p_error">&nbsp;</p>
-                    </div>
-                    <div class="one-input">
-                      <p>Prime q</p>
-                      <input type="number" id="prime_number_q">
-                      <p class="error-p" id="prime_number_q_error">&nbsp;</p>
-                    </div>
-                    <div hidden class="one-input-e" id="div_number_e">
-                      <p>Nombre e</p>
-                      <input type="number" id="number_e">
-                      <p class="error-p" id="number_e_error">&nbsp;</p>
-                    </div>
-                    <div hidden class="one-input-e" id="div_message_input">
-                      <p>Message à envoyer</p>
-                      <input type="number" id="message_input">
-                      <p class="error-p" id="message_error">&nbsp;</p>
-                    </div>
-                  </div>
-                  <script src="assets/js/RSA_game.js"></script>
-                </div>
-              </div>
-            </section>
+            <!-- Logo -->
+            <a href="index.html" id="logo"><img id="img-logo" src="images/logo-quantum-2.png"></a>
+            <!-- Nav -->
+            <nav id="nav">
+              <ul>
+                <li>
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="current_page_item">
+                  <a href="#">Cryptographie</a>
+                  <ul>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-general-principle">Principe
+                        détaillée de la cryptographie asymétrique</a></li>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA">Chiffrement RSA</a></li>
+                    <li>
+                      <a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive
+                        RSA</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="quantum-computers.html">Ordinateurs quantique</a>
+                </li>
+                <li>
+                  <a href="bibliography.html">Bibliographie</a>
+                </li>
+              </ul>
+            </nav>
           </div>
-        </div>
-
-      </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer Wrapper -->
-      <div id="footer-wrapper">
-        <footer id="footer" class="container">
-            <div class="col-12">
-              <div id="copyright">
-                <ul class="menu">
-                  <li>&copy; Untitled. All rights reserved</li>
-                  <li>Github: <a href="https://github.com/roland-robert/quantum-crypto-website">here</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
+        </header>
       </div>
     </div>
+    <!-- Main Wrapper -->
+    <div id="main-wrapper">
+      <div class="wrapper style2">
+        <div class="inner">
+          <!-- Feature 2 -->
+          <section class="container box feature2">
+            <div class="row">
+              <div class="col-12">
+                <header class="first major">
+                  <h2>Cryptographie: Notions fondamentales</h2>
+                </header>
+                <p> La cryptographie est l'étude des techniques visant à sécuriser les communications et à protéger les
+                  informations en les rendant illisibles pour toute personne non autorisée. Elle repose sur
+                  l'utilisation de méthodes mathématiques et informatiques pour chiffrer et déchiffrer des données. Les
+                  principaux objectifs de la cryptographie sont la confidentialité, l'authenticité, l'intégrité et la
+                  non-répudiation des informations échangées. <br>La cryptographie se divise en 4 axes principaux : </p>
+                <div class="container-tab-22">
+                  <div class="block-tab-22">
+                    <h5>Chiffrement asymétrique</h5>
+                    <p>Utilise deux clés distinctes pour chiffrer et déchiffrer des données. Une clé publique est
+                      partagée librement tandis qu'une clé privée est gardée secrète. Cela permet des communications
+                      sécurisées sans nécessiter un échange sécurisé de clés au préalable. Cette méthode de chiffrement
+                      est incontournable pour toute communication en ligne, étant donné que les échanges peuvent
+                      potentiellement être interceptés à n'importe quel moment. L'algorithme asymétrique le plus répendu
+                      est le RSA.</p>
+                    <div class="vertical-aligned-figures">
+                      <figure>
+                        <img src="images/asymetric_encryption.png" alt="asymmetric_encryption.png">
+                        <figcaption>Fig.1 - Chiffrement asymétrique</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="block-tab-22">
+                    <h5>Chiffrement symétrique</h5>
+                    <p>Utilise une seule clé pour chiffrer et déchiffrer des données. Ce chiffrement est plus rapide que
+                      le chiffrement asymétrique mais nécessite un échange sécurisé de clés, souvent par le biais d'un
+                      algorithme asymétrique. Il est couramment utilisé pour le cryptage de grandes quantités de
+                      données, par exemple le protocole HTTPS, après avoir établi une connexion sécurisée avec le
+                      serveur, communique principalement avec des algorithmes symétriques (AES étant le plus répendu).
+                    </p>
+                    <div class="vertical-aligned-figures">
+                      <figure>
+                        <img src="images/symetric_encryption.png" alt="symmetric_encryption.png">
+                        <figcaption>Fig.2 - Chiffrement symétrique</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="block-tab-22">
+                    <h5>Hashage</h5>
+                    <p>Transforme des données en une empreinte numérique unique de taille fixe. C'est utilisé pour
+                      vérifier l'intégrité des données et pour stocker des mots de passe de manière sécurisée, entre
+                      autres applications.</p>
+                  </div>
+                  <div class="block-tab-22">
+                    <h5>Signature numérique</h5>
+                    <p>Utilise une clé privée pour chiffrer un hash de données, ce qui crée une signature unique. Cette
+                      signature peut être vérifiée à l'aide de la clé publique correspondante, garantissant
+                      l'authenticité, l'intégrité et la non-répudiation des données.</p>
+                  </div>
+                </div>
+                <p>Dans le contexte de la cryptographie post-quantique, le chiffrement asymétrique et la signature
+                  suscitent un intérêt particulier. Ces deux méthodes reposent souvent sur les mêmes concepts
+                  mathématiques, qui sont à risque de devenir inefficaces après l'arrivée des ordinateurs quantiques.
+                </p>
+                <h3 id="asymetric-cryptography-detailed">Principe détaillé de la cryptographie asymétrique
+                </h3>
+                <p> Deux partis souhaitent communiquer secrètement. Cependant n'importe qui peut intercepter ce qu'ils
+                  envoient, comme c'est souvent le cas en ligne. C'est pourquoi, une méthode de cryptographie symétrique
+                  ne peut pas être suffisant car ils n'ont pas de moyen sécuriser de se partager une clé commune. <br>
+                  <br> Pour ce faire, chaque parti se fabriquent deux clé, une publique et une privée, ce couple de clé
+                  sont relié par une certaine propriété (dans les cas qui nous intéressent comme le chiffrement RSA, la
+                  clé privée est équivalent à la décomposition en facteurs premier de la clé publique). Un message peut
+                  alors être chiffrer par la clé publique (n'importe qui peut le faire), et déchiffré uniquement avec la
+                  clé privée (seul le propriétaire peut le faire). <br> Une propriété très répandue est la commutativité
+                  du chiffrement et du déchiffrement, ce qui permet de signer un message. D représente le processus de
+                  chiffrement (avec clé publique), E le processus de déchiffrement (avec clé privée). <br>
+                  <br>
+                  <math display="block" class="math-block">
+                    <mrow>
+                      <mi>D</mi>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <mi>E</mi>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <mi>M</mi>
+                      <mo form="postfix" stretchy="false">)</mo>
+                      <mo form="postfix" stretchy="false">)</mo>
+                      <mo>=</mo>
+                      <mi>E</mi>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <mi>D</mi>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <mi>M</mi>
+                      <mo form="postfix" stretchy="false">)</mo>
+                      <mo form="postfix" stretchy="false">)</mo>
+                      <mo>=</mo>
+                      <mi>M</mi>
+                    </mrow>
+                  </math><br> Dans ces cas, il est très simple de signer un message M, et on envoie le message signé S
+                  qui est le message M, déchiffré: <br>
+                  <br>
+                  <math display="block" class="math-block">
+                    <mrow>
+                      <mi>S</mi>
+                      <mo>=</mo>
+                      <msub>
+                        <mi>D</mi>
+                        <mi>2</mi>
+                      </msub>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <mi>M</mi>
+                      <mo form="postfix" stretchy="false">)</mo>
+                    </mrow>
+                  </math><br> Il est alors très simple de déduire le message M de S en chiffrant S avec la clé publique
+                  2, mais il faut posséder la clé privée 2 pour déduire S de M, garantissant ainsi l'origine du message.
+                  <br>
+                <h3 id="discrete-log-factorisation">Logarithme discret et factorisation d'entier: pilliers
+                  de la majorité des algorithmes asymétriques. </h3> La grande majorité des algorithmes asymétriques
+                actuels reposent sur la difficulté à résoudre le logarithme discret et la factorisation d'entiers. (RSA,
+                DHKE, ElGamal, ECC, ECDH, DSA) <div class="container-tab-22">
+                  <div class="block-tab-22">
+                    <h5>Factorisation d'entier</h5>
+                    <div class="vertical-aligned-figures">
+                      <figure>
+                        <img src="images/factorisation_entier_simple.png" alt="factorisation_entier.png">
+                      </figure>
+                    </div>
+                    <p> Plusieurs algorithmes de chiffrement asymétrique et de signature, le plus populaire étant le
+                      RSA, utilisent comme principe qu'il est difficile de factoriser un entier. En effet, la meilleure
+                      méthode actuelle (number field sieve), a une complexité exponentielle, et le plus grand chiffre
+                      factorisé à ce jour contient 200 chiffres <strong><a style="text-decoration: none;"
+                          href="bibliography.html#biblio_3">[3]</a></strong>. Les clés RSA actuelles, ont entre 300 et
+                      600 chiffres (1024 et 2048 bits). </p>
+                  </div>
+                  <div class="block-tab-22">
+                    <h5>Logarithme discret</h5>
+                    <div class="vertical-aligned-figures">
+                      <figure>
+                        <img src="images/logarithme_discret.png" alt="logarithme_discret.png">
+                      </figure>
+                    </div>
+                    <p>Trouver le logarithme discret d'un entier entier est une tache difficile lorsque l'entier n est
+                      bien choisi. Il est souvent nécéssaire d'essayer tous les k possibles jusqu'à obtenir le résultat.
+                      La difficulté à résoudre le problème du logarithme discret est utilisé par de nombreux algorithme
+                      d'échange de clé (key encapsulation), dont la majorité se basent sur le Diffie-Hellman key
+                      exchange. [ref On the complexity of the discrete logarithm and Diffie–Hellman problems Ian F.
+                      Blake a, and Theo Garefalakis b] </p>
+                  </div>
+                </div>
+                <p>Avec l'arrivée des ordinateurs quantiques, ces problèmes pourront être résolus en complexité
+                  polynomiale (cubique).</p>
+                </p>
+                <h3 id="impacted-systems">Quelles systèmes sont impactés ?</h3>
+                <p>La liste des systèmes utilisant des algorithme d'échange de clé ou de signature basé sur les deux
+                  principes ci-dessus sont très nombreux.
+                <ol>
+                  <li><strong>HTTPS/TLS</strong> : D'après la documentation officielle des spécification TLS 1.3 [ref
+                    The Transport Layer Security (TLS) Protocol Version 1.3], l'échange de clé entre le client et le
+                    serveur doit se faire utilisant les algorithme DHE (Diffie-Hellman classique, groupe des entiers),
+                    ECDHE (Diffi-Hellman Courbe Elliptique) et la signature doit se faire utilisant le RSA ou le ECDHA.
+                    Ces trois algorithmes seront obsolète à l'arrivée des ordinateurs quantiques.</li><br>
+                  <li><strong>Signatures de logiciels ou d'applications</strong> : la majorité des éditeurs signent
+                    leurs logiciels (leurs clés publiques sont répertoriés), permettant ainsi à Windows, Google Play ou
+                    Apple de certifier l'authenticité d'executables, baissant la garde des systèmes de controles des
+                    appareils concernés. Ces signatures utilisent majoritairement le DSA (Digital Signature Algorithm),
+                    basé sur le logarithme discret.</li><br>
+                  <li><strong>Cryptomonaies</strong>: les transactions sont effectués sur la base de signature (le
+                    donneur d'argent doit signer la transaction), le bitcoin utilise le ECDSA [ref Elliptic Curve
+                    Digital Signature Algorithm - Bitcoin Wiki]. Il sera donc nécessaire de changer cet algorithme dans
+                    un futur proche, par le biais d'un vote. </li><br>
+                  <li><strong>SSH (Secure Shell)</strong>: pour se connecter à un appareil à distance ou son compte
+                    github, le protocol SSH est majoritairement utilisé. Tout comme le système TLS, le système SSH
+                    utilise aussi des algorithmes à risque pour les échanges de clé. </li><br>
+                  <li><strong>E2EE (End to End Encryption)</strong>: cette méthode est utilisé lors de la communication
+                    directe avec un parti, les applications les plus connues sont WhatsApp, Signal ou Télégram. Signal
+                    est l'exception, a récemment changé sont algorithmes de chiffrement pour être robuste aux attaques
+                    d'un ordinateur quantique [ref Quantum Resistance and the Signal Protocol].</li>
+                </ol> Le plus grand risque concerne les messages confidentiels long termes, qui peuvent être stocké pour
+                être déchiffrés plus tard. </p>
+                <h3 id="asymetric-cryptography-RSA">Chiffrement RSA </h3> Le chiffrement RSA est l'exemple le plus
+                classique de chiffrement asymétrique. Il nous intéresse particulièrement car il fait partie des systèmes
+                de chiffrement qui peuvent être résolus par des ordinateur quantiques, car il se base sur le principe
+                que trouver les facteurs premier d'un nombre est en complexité exponentielle de la taille du nombre.
+                <br>
+                <br>
+                <h4>Création d'un couple clé publique et clé privée</h4>
+                <ol>
+                  <li>Sélectionner deux nombres premiers distincts, notés <math>p</math> et <math>q</math>.</li>
+                  <li><math>n = pq</math>, sera le module de chiffrement.</li>
+                  <li>Calculer <math>φ(n) = (p - 1)(q - 1)</math>, l'indicatrice d'Euler associée à <math>n</math>.</li>
+                  <li>Choisir un entier naturel <math>e</math> qui est premier avec <math>φ(n)</math> de préférence
+                    strictement inférieur à <math>φ(n)</math>; cet entier sera l'exposant de chiffrement.</li>
+                  <li>Calculer l'entier naturel <math>d</math>, l'inverse modulaire de <math>e</math> modulo
+                    <math>φ(n)</math>, également strictement inférieur à <math>φ(n)</math>. L'algorithme d'Euclide
+                    étendu peut être utilisé pour calculer efficacement <math>d</math> c'est l'algorithme utilisé dans
+                    la simulation ci-dessous (cf: <a
+                      href="https://github.com/roland-robert/quantum-crypto-website/blob/main/assets/js/RSA_game.js#L115">fonction
+                      js</a>). Ce dernier sera l'exposant de déchiffrement.</li>
+                </ol> Ensuite, n (module de chiffrement) et e (exposant de chiffrement) pourront être partagés, c'est la
+                clé publique, et d (exposant de déchiffrement) sera gardé secret c'est la clé privée. <br>
+                <br>
+                <h4>Chiffrement, déchiffrement et signature</h4> Pour un message <math display="inline"
+                  class="tml-display" style="display:block math;">
+                  <mrow>
+                    <mi>M</mi>
+                    <mo>∈</mo>
+                    <mi>ℕ</mi>
+                  </mrow>
+                </math>, pour un déstinataire B, le message M chiffré est : <math display="inline" class="tml-display"
+                  style="display:block math;">
+                  <mrow>
+                    <mi>C</mi>
+                    <mo>=</mo>
+                    <msup>
+                      <mi>M</mi>
+                      <mi>e</mi>
+                    </msup>
+                    <mo form="prefix" stretchy="false">[</mo>
+                    <mi>n</mi>
+                    <mo form="postfix" stretchy="false">]</mo>
+                  </mrow>
+                </math>, ensuite en utilisant la propriété <math display="inline" class="tml-display"
+                  style="display:block math;">
+                  <mrow>
+                    <msup>
+                      <mi>M</mi>
+                      <mrow>
+                        <mi>e</mi>
+                        <mi>d</mi>
+                      </mrow>
+                    </msup>
+                    <mo form="prefix" stretchy="false">[</mo>
+                    <mi>n</mi>
+                    <mo form="postfix" stretchy="false">]</mo>
+                    <mo>=</mo>
+                    <mi>M</mi>
+                  </mrow>
+                </math> le déchiffrement se fait tout seul (si M < n) (démonstration <strong><a
+                    style="text-decoration: none;" href="bibliography.html#biblio_6">[6]</a></strong>). Les modules de
+                  chiffrement et de déchiffrement sont interchangeables. <br> Pour signer un message, on déchiffre nous
+                  même le message avec notre clé privée, et on envoie ce message déchiffré au destinataire comme un
+                  message normal. Le destinataire pourra alors déduire le message initial du message signé avec votre
+                  clé privée, et ainsi être sûr qu'il provient de vous. <br> Plus de détails sur l'algorithme de
+                  chiffrement RSA : <strong><a style="text-decoration: none;"
+                      href="bibliography.html#biblio_3">[3]</a></strong>
+                  <h3 id="asymetric-cryptography-RSA-game">Simulation RSA intéractive</h3> Choisissez d'abord deux
+                  nombres premiers p et q. <br> Ensuite choisissez votre exposant de chiffrement e premier avec
+                  l'indicatrice d'Euler (si vous échouez, un e vous sera proposé). <br> Enfin choisissez un message à
+                  envoyer (votre message devrait être un entier inférieur à la clé publique de Bob nBob = 360823068887)
+                  <br> Bob vous envoie aussi un message que vous déchiffre avec votre clé d. Le message de Bob est, le
+                  premier chiffre de la séquence 1, 12, 123, 1234 inférieur à votre n. Le message entier peut alors être
+                  converti en chaine de caractères avec le décodage ASCII, utf-8 etc..., non montré ici.<br> Tout le
+                  code peut être trouvé <strong><a
+                      href="https://github.com/roland-robert/quantum-crypto-website/blob/main/assets/js/RSA_game.js#L65">ici</a></strong>.
+                  <br><br><br>
+              </div>
+            </div>
+          </section>
+          <!-- Feature 2 -->
+          <section class="container box feature2">
+            <div class="row">
+              <div class="col-12">
+                <canvas id="rsaGameCanvas" width="800" height="400"></canvas>
+                <br>
+                <div class="input-divs">
+                  <div class="one-input">
+                    <p>Prime p</p>
+                    <input type="number" id="prime_number_p">
+                    <p class="error-p" id="prime_number_p_error">&nbsp;</p>
+                  </div>
+                  <div class="one-input">
+                    <p>Prime q</p>
+                    <input type="number" id="prime_number_q">
+                    <p class="error-p" id="prime_number_q_error">&nbsp;</p>
+                  </div>
+                  <div hidden class="one-input-e" id="div_number_e">
+                    <p>Nombre e</p>
+                    <input type="number" id="number_e">
+                    <p class="error-p" id="number_e_error">&nbsp;</p>
+                  </div>
+                  <div hidden class="one-input-e" id="div_message_input">
+                    <p>Message à envoyer</p>
+                    <input type="number" id="message_input">
+                    <p class="error-p" id="message_error">&nbsp;</p>
+                  </div>
+                </div>
+                <script src="assets/js/RSA_game.js"></script>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <!-- Footer Wrapper -->
+  <div id="footer-wrapper">
+    <footer id="footer" class="container">
+      <div class="col-12">
+        <div id="copyright">
+          <ul class="menu">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Github: <a href="https://github.com/roland-robert/quantum-crypto-website">here</a></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  </footer>
+  </div>
+  </div>
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
 </html>

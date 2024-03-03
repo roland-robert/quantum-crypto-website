@@ -1,213 +1,562 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cryptographie Quantique</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link rel="stylesheet" href="assets/css/main.css" />
-  </head>
-  <body class="homepage is-preload">
-    <div id="page-wrapper">
-      <!-- Header -->
-      <div id="header-wrapper">
-        <div class="container">
-          <!-- Header -->
-          <header id="header">
-            <div class="inner">
-              <!-- Logo -->
-              <a href="index.html" id="logo"><img id="img-logo" src="images/logo-quantum-2.png"></a>
 
-              <!-- Nav -->
-              <nav id="nav">
-                <ul>
-                  <li>
-                    <a href="index.html">Home</a>
-                  </li>
-                  <li>
-                    <a href="asymetric-cryptography.html">Cryptographie Asymétrique</a>
-                    <ul>
-                      <li><a href="asymetric-cryptography.html#asymetric-cryptography-general-principle">Principe général</a></li>
-                      <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA">Chiffrement RSA</a></li>
-                      <li>
-                        <a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive RSA</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="current_page_item">
-                    <a href="quantum-computers.html">Ordinateurs quantique</a>
-                  </li>
-                  <li>
-                    <a href="bibliography.html">Bibliographie</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </header>
-        </div>
-      </div>
-      <!-- Main Wrapper -->
-      <div id="main-wrapper">
-        <div class="wrapper style2">
+<head>
+  <title>Cryptographie Quantique</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="homepage is-preload">
+  <div id="page-wrapper">
+    <!-- Header -->
+    <div id="header-wrapper">
+      <div class="container">
+        <!-- Header -->
+        <header id="header">
           <div class="inner">
-            <!-- Feature 2 -->
-            <section class="container box feature2">
-              <div class="row">
-                <div class="col-12">
-                  <header class="first major">
-                    <h2>Ordinateurs Quantiques</h2>
-                  </header>
-                  <p>
-                    Introduction
-                  </p>
-                  <h3 id="quantum-computers-forces-et-faiblesses">Notions</h3>
-                  <p>
-                    Quelques notions sont à connaîtres : 
-                  </p>
-                  <h3 id="quantum-computers-forces-et-faiblesses">Forces et faiblesse des ordinateurs quantiques</h3>
-                  <p>
-                    Les qbits d'un ordinateur quantique ont l'avantage de pouvoir être dans plusieurs états à la fois selon une fonction d'onde.
-                    Ainsi avec N qbits, il est possible d'opérer avec <math display="inline" class="tml-display" style="display:block math;">
-                      <msup>
-                        <mn>2</mn>
-                        <mi>N</mi>
-                      </msup>
-                    </math> combinaisons à la fois. Donc la puissance de calcul d'un ordinateur quantique est en théorie
-                     exponentiellement meilleure qu'un ordinateur classique.
-                     <br>
-                     Cependant, lorsqu'une mesure est faite sur un résultat, le résultat sur une seule combinaison est effectuée.
-                     De ce fait, en pratique l'ordinateur quantique ne peut pas être utilisé dans la majorité des situations.
-                     Afin d'obtenir des résultats utiles, il est nécessaire d'opérer avec des algorithmes quantiques spécifiques
-                     pour tirer le plus d'informations possible des qbits [REF quantum algorithms Mosca]. Ces algorithmes astucieux se basent sur des manipulations de bases,
-                    comme la transformée de Fourier quantique ou l'amplification d'amplitude.
-                  </p>
-
-                  <h3 id="quantum-computers-shors">Algorithme de Shor</h3>
-                  <p>
-                    L'algorithme qui nous intéresse dans le cadre de la cryptographie quantique,
-                    est l'algorithme de Shor qui permet de factoriser un nombre premier en complexité logarithmique/linéaire (au lieu de exponentielle).
-
-                    Comme vu dans la section <a style="text-decoration: none;" href="asymetric-cryptography.html">Cryptographie Asymétrique</a>, trouver les facteur premier
-                    revient à rendre des algorithmes de chiffrements asymétriques classiques (RSA, Diffie-Hellman) obsolètes.
-                    <br>
-                    <br>
-                    Prénons deux nombres premiers <math>p</math> et <math>q</math>, on pose <math>N = pq</math>.
-                    L'idée sera de trouver un entier <math>g</math> qui partage des facteurs avec <math>N</math>.
-                    <br>
-                    Pour se faire, on choisit un nombre aléatoire <math>a</math>, ce nombre est probablement premier avec N (si il ne l'est pas, on a gagné).
-
-                    Alors : 
-
-                    <math display="block" class="tml-display" style="display:block math;">
-                      <mrow>
-                        <mi>∃</mi>
-                        <mi>r</mi>
-                        <mtext>
-                        </mtext>
-                        <mi>/</mi>
-                        <mtext>
-                        </mtext>
-                        <msup>
-                          <mi>a</mi>
-                          <mi>r</mi>
-                        </msup>
-                        <mo>≡</mo>
-                        <mn>1</mn>
-                        <mo form="prefix" stretchy="false">[</mo>
-                        <mi>N</mi>
-                        <mo form="postfix" stretchy="false">]</mo>
-                      </mrow>
-                    </math>
-
-                    Si r est pair (ce qui arrive en moyenne 1 fois sur 2) : 
-
-                    <math display="block" class="tml-display" style="display:block math;">
-                      <mrow>
-                        <mo form="prefix" stretchy="false">(</mo>
-                        <msup>
-                          <mi>a</mi>
-                          <mrow>
-                            <mi>r</mi>
-                            <mi>/</mi>
-                            <mn>2</mn>
-                          </mrow>
-                        </msup>
-                        <mo>−</mo>
-                        <mn>1</mn>
-                        <mo form="postfix" stretchy="false">)</mo>
-                        <mo form="prefix" stretchy="false">(</mo>
-                        <msup>
-                          <mi>a</mi>
-                          <mrow>
-                            <mi>r</mi>
-                            <mi>/</mi>
-                            <mn>2</mn>
-                          </mrow>
-                        </msup>
-                        <mo>+</mo>
-                        <mn>1</mn>
-                        <mo form="postfix" stretchy="false">)</mo>
-                        <mo>=</mo>
-                        <mi>k</mi>
-                        <mi>N</mi>
-                      </mrow>
-                    </math>
-
-                    Ainsi, <math display="inline" class="tml-display" style="display:block math;">
-                      <mrow>
-                        <mo form="prefix" stretchy="false">(</mo>
-                        <msup>
-                          <mi>a</mi>
-                          <mrow>
-                            <mi>r</mi>
-                            <mi>/</mi>
-                            <mn>2</mn>
-                          </mrow>
-                        </msup>
-                        <mo>±</mo>
-                        <mn>1</mn>
-                        <mo form="postfix" stretchy="false">)</mo>
-                      </mrow>
-                    </math>, l'un de ces entiers a une grande probabilité de partages des facteurs avec <math>N</math>. Il sera ensuite possible de déterminer ce facteur commun avec l'algorithme d'euclide (complexité logarithmique).
-                  
-                  <br>
-                  <br>
-                  
-                  </p>
-            </section>
+            <!-- Logo -->
+            <a href="index.html" id="logo"><img id="img-logo" src="images/logo-quantum-2.png"></a>
+            <!-- Nav -->
+            <nav id="nav">
+              <ul>
+                <li>
+                  <a href="index.html">Home</a>
+                </li>
+                <li>
+                  <a href="asymetric-cryptography.html">Cryptographie</a>
+                  <ul>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-general-principle">Principe
+                        général</a></li>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA">Chiffrement RSA</a></li>
+                    <li>
+                      <a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive
+                        RSA</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="current_page_item">
+                  <a href="quantum-computers.html">Ordinateurs quantique</a>
+                </li>
+                <li>
+                  <a href="bibliography.html">Bibliographie</a>
+                </li>
+              </ul>
+            </nav>
           </div>
-        </div>
-
-      </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer Wrapper -->
-      <div id="footer-wrapper">
-        <footer id="footer" class="container">
-            <div class="col-12">
-              <div id="copyright">
-                <ul class="menu">
-                  <li>&copy; Untitled. All rights reserved</li>
-                  <li>Github: <a href="https://github.com/roland-robert/quantum-crypto-website">here</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
+        </header>
       </div>
     </div>
+    <!-- Main Wrapper -->
+    <div id="main-wrapper">
+      <div class="wrapper style2">
+        <div class="inner">
+          <!-- Feature 2 -->
+          <section class="container box feature2">
+            <div class="row">
+              <div class="col-12">
+                <header class="first major">
+                  <h2>Ordinateurs Quantiques</h2>
+                </header>
+                <p> Introduction </p>
+                <h3 id="quantum-computers-forces-et-faiblesses">Qubits</h3>
+                <p> Les qubits, ou "quantum bits", sont les unités fondamentales de l'information quantique utilisées
+                  dans l'informatique quantique. Contrairement aux bits classiques de l'informatique traditionnelle, qui
+                  peuvent être soit 0 soit 1, un qubit peut être à la fois 0 et 1 simultanément, grâce à un phénomène
+                  quantique appelé superposition. Cela signifie qu'un qubit peut représenter et stocker une quantité
+                  beaucoup plus grande d'informations que son homologue classique. Une autre caractéristique essentielle
+                  des qubits est leur capacité à être corrélés ou "entrelacés" entre eux, ce qui signifie que l'état
+                  d'un qubit peut dépendre de l'état d'un autre, même s'ils sont physiquement séparés. Cela permet des
+                  opérations complexes sur un grand nombre de qubits en parallèle, ce qui rend les ordinateurs
+                  quantiques potentiellement beaucoup plus puissants que les ordinateurs classiques pour certaines
+                  tâches spécifiques. L'une des opérations les plus importantes dans le traitement quantique est la
+                  mesure, qui permet de déterminer l'état d'un qubit. Lorsqu'un qubit est mesuré, il "colle" à un état
+                  spécifique, soit 0 soit 1, avec une certaine probabilité qui dépend de sa superposition d'origine. Ce
+                  processus de mesure est non déterministe, ce qui signifie qu'il est impossible de prédire avec
+                  certitude le résultat de la mesure avant qu'elle ne soit effectuée. Cependant, une fois qu'un qubit
+                  est mesuré, il perd sa superposition et se comporte comme un bit classique.</p>
+                <div class="container-tab-22">
+                  <div class="block-tab-22">
+                    <h5>Qubits</h5>
+                    <div class="figure-2">
+                      <figure>
+                        <img src="images/quantum-images/qbit-representation.png" alt="qubit_rep.png">
+                        <figcaption>Représentation "Bloch Sphere" d'un qubit <a
+                            href="https://qbyte.btq.com/quantum101">qbyte</a></figcaption>
+                      </figure>
+                    </div>
+                    <br>
+                    <p>Chaque qubit peut être caractérisé par sa phase, qui détermine la position de son vecteur d'état
+                      sur la sphère de Bloch, ainsi que par sa probabilité d'être mesuré dans l'état 0 ou 1.</p>
+                    <P> L'état superposé d'un Qubit correspond à une onde, qui peut interférer de manière constructive
+                      ou destructive avec d'autres Qubits selon la phase. Après mesure, le Qubit quitte son état
+                      superposé et prend une valeur fixe.</P>
+                  </div>
+                  <div class="block-tab-22">
+                    <h5>Combinaison de Qubits et Intrication Quantique</h5>
+                    <div class="vertical-aligned-figures">
+                      <figure>
+                        <img src="images/quantum-images/superposition-state-representation.png"
+                          alt="superposition_qubits.png">
+                        <figcaption>Etat superposé de 4 Qubits, 16 états à gauche (classique), 1 état à droite
+                          (quantique)</figcaption>
+                      </figure>
+                    </div>
+                    <p>En combinant plusieurs qubits, on peut créer des états superposés complexes. Ces états peuvent
+                      être le résultat de phénomènes tels que l'interférence et l'intrication quantique.</p>
+                    <p>L'intrication quantique est un phénomène où les états de plusieurs qubits deviennent
+                      interdépendants, de sorte que l'état de l'un est lié à celui des autres, même s'ils sont
+                      physiquement séparés. Cela signifie que la manipulation d'un qubit peut affecter instantanément
+                      l'état d'un autre, quelle que soit la distance entre eux, c'est ce phénomène qu'exploite certaine
+                      portes quantiques (comme la porte CNOT) vues dans la section suivante.</p>
+                    <p>Le système combiné de qubits peut être dans un état superposé avec <math display="inline">
+                        <msup>
+                          <mn>2</mn>
+                          <mi>n</mi>
+                        </msup>
+                      </math> états possibles, où <i>n</i> est le nombre de qubits. Il est possible de déterminer la
+                      densité de probabilité du système (probabilité d'obtenir chaque état distinct)</p>
+                  </div>
+                </div>
+                <h3 id="portes-algorithmes-quantiques">Portes et Algorithmes quantiques</h3>
+                <p> Les qbits d'un ordinateur quantique ont l'avantage de pouvoir être dans plusieurs états à la fois
+                  selon une fonction d'onde. Ainsi avec N qbits, il est possible d'opérer avec <math display="inline"
+                    class="tml-display" style="display:block math;">
+                    <msup>
+                      <mn>2</mn>
+                      <mi>N</mi>
+                    </msup>
+                  </math> combinaisons à la fois. Donc la puissance de calcul d'un ordinateur quantique est en théorie
+                  exponentiellement meilleure qu'un ordinateur classique. <br> Cependant, lorsqu'une mesure est faite,
+                  le résultat d'un seul état est obtenu. De ce fait, en pratique l'ordinateur quantique ne peut pas être
+                  utilisé dans la majorité des situations. Afin d'obtenir des résultats utiles, il est nécessaire
+                  d'opérer avec des algorithmes quantiques spécifiques pour tirer le plus d'informations possible des
+                  qbits [REF quantum algorithms Mosca]. </p>
+                <ol>
+                  <p>Pour manipuler des registres de qubits on utilise des portes quantiques, tout comme un ordinateur
+                    classique utilise des portes logiques. Ces portes logiques diffèrent beaucoup des portes logiques
+                    classiques :</p>
+                  <li class="li-tab"><strong>Porte de Hadamard</strong>: Cette porte crée une superposition entre les
+                    états de base |0⟩ et |1⟩. Elle est souvent utilisée au début des algorithmes quantiques pour créer
+                    des superpositions et est essentielle dans de nombreux circuits quantiques. </li>
+                  <li class="li-tab"><strong>Porte de Pauli (X, Y, Z)</strong>: Ces portes effectuent des rotations
+                    autour des axes X, Y et Z du sphère de Bloch. Elles sont utilisées pour effectuer des opérations de
+                    bascule de bits et des rotations de phase.</li>
+                  <li class="li-tab"><strong>Porte de CNOT (Controlled-NOT)</strong>: Cette porte effectue une opération
+                    de bascule de bits sur le deuxième qubit (cible) uniquement si le premier qubit (contrôle) est dans
+                    l'état |1⟩. Elle est largement utilisée dans les circuits quantiques pour créer des corrélations
+                    entre les qubits.</li>
+                  <li class="li-tab"><strong>Porte de Fredkin (Controlled-SWAP)</strong>: Cette porte échange les états
+                    de deux qubits cibles uniquement si le premier qubit (contrôle) est dans l'état |1⟩. Elle est
+                    utilisée pour effectuer des opérations de permutation conditionnelles dans les circuits quantiques.
+                  </li>
+                  <li class="li-tab"><strong>Porte de rotation</strong>: Cette porte effectue une rotation d'un angle
+                    spécifié autour de l'axe de la sphère de Bloch. Elle est utilisée pour effectuer des opérations de
+                    rotation arbitraires sur les qubits dans un circuit quantique.</li>
+                  <li class="li-tab"><strong>Porte de mesure</strong>: Cette porte mesure l'état d'un qubit, le
+                    projetant dans l'un des états de base |0⟩ ou |1⟩. Elle est utilisée pour extraire de l'information
+                    du système quantique, permettant ainsi de lire les résultats d'un calcul quantique.</li>
+                  <li class="li-tab"><strong>Porte de permutation</strong>: Cette porte échange les états de deux
+                    qubits. Elle est utilisée pour réorganiser les états des qubits dans un circuit quantique afin
+                    d'effectuer des opérations de permutation.</li>
+                </ol>
+                <ol> Des combinaisons spécifiques de ces portes quantiques sur des "colonnes" de qubits forment des
+                  algorithmes quantiques, dont les plus utilisés sont : <li class="li-tab">
+                    <strong>Transformée de Fourier Quantique</strong>: La transformation de Fourier quantique (QFT) est
+                    l'équivalent quantique de la transformation de Fourier classique. Elle est utilisée dans de nombreux
+                    algorithmes quantiques, notamment l'algorithme de Shor, pour effectuer des calculs sur des
+                    périodicités dans les données quantiques. La QFT transforme une superposition d'états quantiques en
+                    une superposition de fréquences associées, permettant ainsi de résoudre efficacement certains
+                    problèmes d'analyse de données quantiques
+                  </li>
+                  <li class="li-tab">
+                    <strong>Amplification d'amplitude</strong>: L'amplification d'amplitude est une technique utilisée
+                    dans des algorithmes quantiques tels que l'algorithme de Grover pour amplifier la probabilité de
+                    trouver la solution souhaitée dans une recherche non structurée (permet la recherche dans une liste
+                    en racine de n). Elle exploite la propriété de la superposition quantique pour accroître la
+                    probabilité d'obtenir le résultat souhaité tout en réduisant la probabilité d'obtenir d'autres
+                    résultats indésirables.
+                  </li>
+                  <li class="li-tab">
+                    <strong>Marche Quantique</strong>: Les marches quantiques sont une généralisation quantique des
+                    marches aléatoires classiques. Elles sont utilisées pour explorer des graphes et des réseaux
+                    quantiques de manière efficace, ce qui peut avoir des applications dans le domaine de la recherche
+                    d'algorithmes quantiques, de la simulation quantique et de l'optimisation combinatoire.
+                  </li>
+                </ol>
+                <p> Dans la partie suivante, nous allons voir en détail l'algorithme de Shor, qui repose sur la
+                  Transformée de Fourier Quantique.</p>
+                <h3 id="quantum-computers-shors">Algorithme de Shor</h3>
+                <p> L'algorithme qui nous intéresse dans le cadre de la cryptographie quantique, est l'algorithme de
+                  Shor qui permet de factoriser un nombre premier en complexité logarithmique/linéaire (au lieu de
+                  exponentielle). Comme vu dans la section <a style="text-decoration: none;"
+                    href="asymetric-cryptography.html">Notions de base en cryptographie</a>, trouver les facteur premier
+                  revient à rendre des algorithmes de chiffrements asymétriques classiques (RSA, Diffie-Hellman)
+                  obsolètes. <br>
+                  <br> Prénons deux nombres premiers <math>p</math> et <math>q</math>, on pose <math>N = pq</math>.
+                  L'idée sera de trouver un entier <math>g</math> qui partage des facteurs avec <math>N</math>. <br>
+                  Pour se faire, on choisit un nombre aléatoire <math>r</math>, ce nombre est probablement premier avec
+                  N (si il ne l'est pas, on a gagné). Alors : <br><br>
+                  <math display="block" class="math-block">
+                    <mrow>
+                      <mi>∃</mi>
+                      <mi>k</mi>
+                      <mtext>
+                      </mtext>
+                      <mi>/</mi>
+                      <mtext>
+                      </mtext>
+                      <msup>
+                        <mi>r</mi>
+                        <mi>k</mi>
+                      </msup>
+                      <mo>≡</mo>
+                      <mn>1</mn>
+                      <mo form="prefix" stretchy="false">[</mo>
+                      <mi>N</mi>
+                      <mo form="postfix" stretchy="false">]</mo>
+                    </mrow>
+                  </math><br> Si k est pair (ce qui arrive en moyenne 1 fois sur 2) : <br><br><math display="block"
+                    class="math-block">
+                    <mrow>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <msup>
+                        <mi>r</mi>
+                        <mrow>
+                          <mi>k</mi>
+                          <mi>/</mi>
+                          <mn>2</mn>
+                        </mrow>
+                      </msup>
+                      <mo>−</mo>
+                      <mn>1</mn>
+                      <mo form="postfix" stretchy="false">)</mo>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <msup>
+                        <mi>r</mi>
+                        <mrow>
+                          <mi>k</mi>
+                          <mi>/</mi>
+                          <mn>2</mn>
+                        </mrow>
+                      </msup>
+                      <mo>+</mo>
+                      <mn>1</mn>
+                      <mo form="postfix" stretchy="false">)</mo>
+                      <mo>=</mo>
+                      <mi>m</mi>
+                      <mi>N</mi>
+                    </mrow>
+                  </math><br> Ainsi, <math display="inline" class="tml-display" style="display:block math;">
+                    <mrow>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <msup>
+                        <mi>r</mi>
+                        <mrow>
+                          <mi>k</mi>
+                          <mi>/</mi>
+                          <mn>2</mn>
+                        </mrow>
+                      </msup>
+                      <mo>±</mo>
+                      <mn>1</mn>
+                      <mo form="postfix" stretchy="false">)</mo>
+                    </mrow>
+                  </math>, l'un de ces entiers a une grande probabilité de partages des facteurs avec <math>N</math>. Il
+                  sera ensuite possible de déterminer ce facteur commun avec l'algorithme d'euclide (complexité
+                  logarithmique). <br>
+                  <br>
+                </p>
+                <p> Avec des ordinateurs classiques, l'algorithme n'est pas très perfomant comparé à l'algorithme du
+                  Number Field Sieve <strong><a style="text-decoration: none;"
+                      href="bibliography.html#biblio_2">[2]</a></strong>, qui a permis de factoriser un entier à 200
+                  chiffres. Cependant, l'étape la plus couteuse de l'agorithme peut être effectuée avec un ordinateur
+                  quantique avec un complexité constante en utilisant la Transformée de Fourier Quantique.
+                <div class="figure-centered">
+                  <figure>
+                    <img src="images/quantum-images/shor-quantum-optimisation.png" alt="shor-qtf.png">
+                    <figcaption>Algorithme quantique pour trouver la période modulo N d'un nombre premier avec N
+                    </figcaption>
+                  </figure>
+                </div> La fonction définie par r et N (r premier avec N), qui à un entier x retourne f(x) = <math
+                  display="inline" class="tml-display" style="display:block math;">
+                  <mrow>
+                    <msup>
+                      <mi>r</mi>
+                      <mi>x</mi>
+                    </msup>
+                    <mo form="prefix" stretchy="false">[</mo>
+                    <mi>N</mi>
+                    <mo form="postfix" stretchy="false">]</mo>
+                  </mrow>
+                </math> est périodique de periode k, avec k le plus petit entier vérifiant la propriété <math
+                  display="inline" class="tml-display" style="display:block math;">
+                  <mrow>
+                    <msup>
+                      <mi>r</mi>
+                      <mi>k</mi>
+                    </msup>
+                    <mo>≡</mo>
+                    <mn>1</mn>
+                    <mo form="prefix" stretchy="false">[</mo>
+                    <mi>N</mi>
+                    <mo form="postfix" stretchy="false">]</mo>
+                  </mrow>
+                </math>. Ainsi, pour le RSA-2048bits, il suffit de 2048 Qubits dans un état superposé pour tester les
+                <math display="inline" class="tml-display" style="display:block math;">
+                  <msup>
+                    <mn>2</mn>
+                    <mn>2048</mn>
+                  </msup>
+                </math> possibilités en une seule fois. Ensuite en effectuant une mesure après passage dans la fonction
+                f, le nouvel état superposé est périodique de periode k. Une transformée de fourier quantique permet de
+                récupérer cette periode k. En pratique, une étude de 2021 montre qu'il faut deux fois ce nombre de
+                qubits, soit 4096 [ref : Quantum attack ressource estimate]. </p>
+                <h3 id="quantum-computers-evolution">Ordinateurs quantiques implémentation physique</h3>
+                <p> Un ordinateur quantique peut être implémenté physiquement par n'importe quel système physique à 2
+                  états quantiques : polarisation d'un photon, spin d'un electron, boite quantique... Tant que ce
+                  système vérifier les critères de DiVincenzo [ref DiVincenzo] : possibilité d'initialiser les qubits à
+                  un état basique (cf : <a href="quantum-computers.html#portes-algorithmes-quantiques">porte de
+                    Hadamard</a>), de mesurer les états quantiques à n'importe quel moment et avoir un temps de
+                  cohérence élevé.</p>
+                <p> Dans la pratique, plusieurs entreprises se sont engagées dans le développement d'ordinateurs
+                  quantiques en utilisant différents systèmes physiques. Chaque système présente des avantages et des
+                  inconvénients, et les entreprises justifient et défendent leur choix spécifique en fonction des
+                  caractéristiques et des performances de leur approche.</p>
+                <div class="container-tab-22">
+                  <div class="block-tab-22">
+                    <h5>Supraconducteur</h5>
+                    <div class="vertical-aligned-figures">
+                      <figure>
+                        <img src="images/quantum-images/quantum_supra_computer.png" alt="supra-quantum-computer.png">
+                        <figcaption>Ordinateur quantique supraconducteur <a href="https://www.ibm.com/quantum">IBM</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <br>
+                    <p>Les qubits de Josephson sont des éléments quantiques artificiels utilisés dans les ordinateurs
+                      quantiques supraconducteurs. Ils exploitent les propriétés des jonctions Josephson, qui permettent
+                      le passage de courants sans résistance électrique. Les qubits de Josephson sont manipulés en
+                      modifiant les paramètres du courant et de la tension appliqués aux jonctions, ce qui leur permet
+                      de représenter et de manipuler l'information quantique. Ces qubits sont généralement des éléments
+                      quantiques artificiels comme des qubits de Josephson. </p>
+                    <p>Les principaux acteurs dans ce domaine incluent IBM, Google et D-Wave. C'est le domaine le plus
+                      étudié actuellement, dont les plus récentes avancées sont l'ordinateur <a
+                        href="https://newsroom.ibm.com/2023-12-04-IBM-Debuts-Next-Generation-Quantum-Processor-IBM-Quantum-System-Two,-Extends-Roadmap-to-Advance-Era-of-Quantum-Utility">Condor
+                        d'IBM (1000 Qubits) en 2023</a> et le <a
+                        href="https://docs.dwavesys.com/docs/latest/c_gs_1.html">D-Wave 2023: Advantage (5000
+                        Qubits)</a></p>
+                    <p> Les ordinateurs quantiques supraconducteurs exploitent des composants quantiques artificiels qui
+                      peuvent être rapidement manipulés à l'aide de portes logiques, offrant ainsi un potentiel de
+                      calcul rapide. Ces qubits sont construits à partir de matériaux supraconducteurs et sont
+                      relativement faciles à fabriquer grâce à des techniques de microfabrication bien établies.
+                      Cependant, pour maintenir leurs propriétés quantiques, ces systèmes nécessitent un refroidissement
+                      cryogénique à des températures très basses (proche de 0 Kelvin), ce qui représente un défi
+                      technique majeur dans le déploiement pratique de ces technologies. [ref: Amirhossein Nourbakhsh,
+                      Quantum Computing: Fundamentals, Trends and Perspectives for Chemical and Biochemical Engineers,
+                      Jan. 2022] </p>
+                  </div>
+                  <div class="block-tab-22">
+                    <h5>Photonique</h5>
+                    <div class="figure-2">
+                      <figure>
+                        <img src="images/quantum-images/photonic-psiquantum-computer.png" alt="photonic.png">
+                        <figcaption>Ordinateur quantique photonique schéma <a
+                            href="https://www.psiquantum.com/approach">PsiQuantum</a> </figcaption>
+                      </figure>
+                    </div>
+                    <br>
+                    <p>Les ordinateurs quantiques photoniques sont des systèmes qui exploitent la nature quantique de la
+                      lumière pour transporter et manipuler l'information quantique. Contrairement aux qubits
+                      traditionnels qui reposent sur des particules matérielles, les qubits photoniques utilisent des
+                      photons, les particules élémentaires de la lumière. Cette approche présente un potentiel
+                      significatif d'évolutivité en raison de la nature intrinsèquement parallèle du traitement optique.
+                      Les photons peuvent être facilement manipulés et transportés sur de longues distances, ce qui
+                      ouvre la voie à des réseaux de communication quantique étendus et à des calculs distribués. Xanadu
+                      et PsiQuantum sont parmi les entreprises les plus en vue dans ce domaine, chacune développant des
+                      technologies et des architectures uniques pour exploiter pleinement le potentiel des ordinateurs
+                      quantiques photoniques.</p>
+                    <p> Dans le domaine de l'informatique quantique photonique, les systèmes sont réputés pour leur
+                      stabilité, avec peu d'erreurs, ce qui est crucial pour des calculs précis. Les portails quantiques
+                      simples sont relativement faciles à implémenter dans ces systèmes. De plus, les temps de cohérence
+                      élevés des qubits photoniques sont remarquables, ce qui signifie que les informations quantiques
+                      peuvent être conservées pendant des périodes plus longues. Cependant, la mise en œuvre de portails
+                      quantiques multi-qubits dans les systèmes photoniques reste un défi, en raison de la nature des
+                      interactions photoniques et des exigences techniques complexes pour contrôler plusieurs qubits
+                      simultanément. Ces défis sont au centre des recherches en cours visant à améliorer les
+                      performances et la polyvalence des ordinateurs quantiques photoniques.[ref: Amirhossein
+                      Nourbakhsh, Quantum Computing: Fundamentals, Trends and Perspectives for Chemical and Biochemical
+                      Engineers, Jan. 2022] </p>
+                  </div>
+                  <div class="block-tab-22">
+                    <h5>Ions piégés</h5>
+                    <div class="figure-2">
+                      <figure>
+                        <img src="images/quantum-images/trapped-ion-image.png" alt="ion.png">
+                        <figcaption>Schéma ion <a href="https://ionq.com/technology">IonQ</a></figcaption>
+                      </figure>
+                    </div>
+                    <br>
+                    <p>Un ordinateur quantique à ions piégés est une approche prometteuse pour créer un ordinateur
+                      quantique à grande échelle. Les ions sont confinés et suspendus dans l'espace à l'aide de champs
+                      électromagnétiques. Les qubits sont stockés dans des états électroniques stables de chaque ion, et
+                      l'information quantique est transférée grâce au mouvement collectif quantifié des ions dans un
+                      piège partagé. Les principales entreprises qui travaillent dessus sont IonQ et Quantum Factory. En
+                      avril 2018, le plus grand nombre de particules entrelacées de manière contrôlée était de 20 ions
+                      piégés. [ref Observation of Entangled States of a Fully Controlled 20-Qubit System].</p>
+                    <p>En petite dimension, les systèmes à ions piégés sont relativement faciles à implémenter. Cela est
+                      dû à leur capacité à confiner et manipuler un petit nombre d'ions avec une grande précision grâce
+                      à des techniques de piégeage électromagnétique. De plus, les systèmes à ions piégés présentent
+                      généralement un temps de cohérence élevé pour les qubits, ce qui signifie que les informations
+                      quantiques peuvent être conservées pendant des durées relativement longues avant de se dégrader.
+                      Cela est dû en partie à la capacité à isoler efficacement les ions du bruit environnemental.
+                      Cependant, à mesure que la dimension du système augmente, les défis deviennent plus importants.
+                      Les systèmes à ions piégés ont tendance à devenir rapidement difficiles à mettre à l'échelle, ce
+                      qui signifie qu'il est difficile d'ajouter un grand nombre de qubits tout en maintenant la
+                      précision et la fiabilité du système.</p>
+                  </div>
+                  <div class="block-tab-22">
+                    <h5>Autres</h5>
+                    <div class="figure-2">
+                      <figure>
+                        <img src="images/quantum-images/spin-electron.png" alt="electron.png">
+                        <figcaption>Schéma spin d'un electron (état quantique superposé entre spin up et spin down)
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <br>
+                    <p>D'autres approches émergent dans le domaine de l'informatique quantique, telles que les qubits
+                      topologiques, qui visent à protéger l'information quantique contre les erreurs environnementales
+                      grâce à des propriétés topologiques particulières. Les qubits de spin exploitent les propriétés
+                      des électrons, des ions ou des noyaux atomiques pour représenter l'information quantique. Les
+                      quantum dots, de minuscules structures semi-conductrices, sont également explorés pour créer des
+                      qubits. De plus, les semi-conducteurs, notamment le silicium, sont considérés comme des candidats
+                      prometteurs pour la construction de qubits, capitalisant sur l'expertise de l'industrie des
+                      semi-conducteurs. Ces approches sont encore en développement mais pourraient jouer un rôle crucial
+                      dans l'avenir de l'informatique quantique en offrant des solutions novatrices pour relever les
+                      défis actuels.</p>
+                  </div>
+                </div>
+                <h3 id="quantum-computer-architecture">Architecture d'un ordinateur quantique : du Qubit Physique au
+                  Qubit Logique</h3> Dans toutes les théories des modèles, les qubits logiques sont utilisés, ce sont
+                des qubits parfaits qui se conforment parfaitement aux équations de superposition. Cependant, dans la
+                pratique, les qubits physiques sont sujets à diverses problématiques. Ces défis incluent notamment les
+                erreurs quantiques dues à des interactions avec l'environnement, les fluctuations de bruit, les défauts
+                dans les composants matériels, et d'autres sources d'instabilité. En conséquence, la cohérence et la
+                précision des qubits physiques sont généralement inférieures à celles des qubits logiques idéaux. Cela
+                nécessite le développement de techniques de correction d'erreurs et de contrôle avancées pour rendre les
+                systèmes quantiques plus robustes et fiables dans des environnements réels. <div class="container-ab3">
+                  <div class="text-block-ab3">
+                    <p>
+                    <ol>
+                      <li class="li-tab">
+                        <strong>Qubit Physique :</strong> Cette couche représente les composants matériels réels de
+                        l'ordinateur quantique, comme les photons, vu dans la partie précédente.
+                      </li>
+                      <li class="li-tab">
+                        <strong>Virtualisation :</strong> Cette couche concerne la conversion des phénomènes quantiques
+                        en représentations d'informations exploitables par les algorithmes quantiques.
+                      </li>
+                      <li class="li-tab">
+                        <strong>Correction d'erreur :</strong> Comme les qubits physiques sont sujets à des erreurs,
+                        cette couche est chargée de détecter et corriger ces erreurs pour garantir la fiabilité des
+                        calculs quantiques. Les techniques de correction d'erreur quantique sont essentielles pour
+                        surmonter les limitations des qubits physiques imparfaits.
+                      </li>
+                      <li class="li-tab">
+                        <strong>Logique :</strong> Cette couche représente l'abstraction logique des opérations
+                        quantiques. Les opérations sur les qubits logiques sont conçues pour être compatibles avec les
+                        principes de la théorie de l'information quantique et pour permettre la réalisation de calculs
+                        quantiques complexes.
+                      </li>
+                      <li class="li-tab">
+                        <strong>Application :</strong> Enfin, cette couche concerne les algorithmes et les interfaces
+                        utilisateur qui exploitent les capacités de l'ordinateur quantique pour résoudre des problèmes
+                        spécifiques. C'est à cette couche que s'effectue l'algorithme de Shor par exemple.
+                      </li>
+                    </ol>
+                    </p>
+                  </div>
+                  <div class="image-block-ab3">
+                    <figure>
+                      <img src="images/quantum-images/architecture-ordinateur-quantique.png" alt="electron.png">
+                      <figcaption><a
+                          href="https://www.researchgate.net/figure/Five-Layered-Architecture-of-Quantum-computer-consisting-of-Application-Logical-Error_fig4_368652284">Architecture
+                          d'un ordinateur quantique</a></figcaption>
+                    </figure>
+                  </div>
+                </div>
+                <p>Ainsi les qubits anoncés par les fabricants (comme les 5000 qubits de D-Wave), sont souvent des
+                  qubits physiques qui après passage dans des portes quantiques adoptent des comportements innatendus
+                  (erreurs, bruits). Ce qui fait qu'aujourd'hui les ordinateurs quantiques sont incapables de tourner
+                  l'algorithme de Shor sur des entiers plus grand que 21 [ref: Pretending to factor large numbers on a
+                  quantum computer]. Pour remédier à ça, plusieurs qubits physiques sont moyennés pour obtenir un qubit
+                  logique. Plus l'algorithme quantique est profond (plus de portails), plus il faudra de qubits
+                  physiques pour avoir un résultat pertinent.</p>
+                <h3 id="evolution-risk-quantum-computers">Evolution des ordinateurs physiques et prédictions futures
+                </h3>
+                <p> Avec l'erreur des Qubits physiques en 2021, un article de Craig Gidney et Martin Ekera montre qu'il
+                  est nécessaire d'avoir 20 Milions de qubits physiques pour appliquer l'algorithme de Shor sur un
+                  entier de 2048 bits[ref: How to Factor 2048 Bit RSA Integers in 8 Hours Using 20 Million Noisy
+                  Qubits]. </p>
+                <p>Le nombre de Qubits utilisés par les ordinateurs quantiques ne font qu'augmenter, et la robustesse de
+                  ces Qubits ne fais que diminuer. Ces deux évolutions ne s'appliquent pas ensemble, l'ordinateur avec
+                  le plus de Qubit n'est pas celui avec le moins d'erreur, par exemple l'ordinateur Quantique Condor
+                  d'IBM, a 1000 Qubits mais a 5 fois plus d'erreurs que l'ordinateur quantique Héron avec 100 Qubits.
+                  Mais cette évolution nous donne une idée de l'imminence du problème de la cryptographie post
+                  quantique.</p>
+                <div class="container-ab3">
+                  <div class="image-block-ab3">
+                    <figure>
+                      <img src="images/quantum-images/gate_fidelity.png" alt="gate_fidelity.png">
+                      <figcaption><a href="https://qbyte.btq.com/quantum_risk_calculator/gate_infidelity">Evoluton de la
+                          fidelité des portes quantiques en fonction de l'année (2022)</a>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="image-block-ab3">
+                    <figure>
+                      <img src="images/quantum-images/number_qubits_evolution.png" alt="qubit evolution.png">
+                      <figcaption><a href="https://qbyte.btq.com/quantum_risk_calculator/qubits">Evolution et prédiction
+                          du nombre de qubits en fonction de l'année (2022)</a></figcaption>
+                    </figure>
+                  </div>
+                </div>
+                <p>Les sources pour l'obtention de ces courbes sont bien documentées sur <a
+                    href="https://qbyte.btq.com">https://qbyte.btq.com</a>, ces prédictions reste assez péssimiste,
+                  l'ordinateur quantique IBM Condor 1000 Qubits est sortie fin 2023, ce qui était prévu d'arriver (selon
+                  les courbes extrapolées) qu'en 2026. </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <!-- Footer Wrapper -->
+  <div id="footer-wrapper">
+    <footer id="footer" class="container">
+      <div class="col-12">
+        <div id="copyright">
+          <ul class="menu">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Github: <a href="https://github.com/roland-robert/quantum-crypto-website">here</a></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  </footer>
+  </div>
+  </div>
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
 </html>
