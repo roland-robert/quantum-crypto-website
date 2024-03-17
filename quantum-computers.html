@@ -27,17 +27,43 @@
                 <li>
                   <a href="asymetric-cryptography.html">Cryptographie</a>
                   <ul>
-                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-general-principle">Principe
-                        général</a></li>
+                    <li><a href="asymetric-cryptography.html">Cryptographie: principe général</a></li>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-detailed">Principe détaillé de la
+                        cryptographie asymétrique</a></li>
+                    <li><a href="asymetric-cryptography.html#discrete-log-factorisation">Logarithme discret et
+                        factorisation d'entier</a></li>
+                    <li><a href="asymetric-cryptography.html#impacted-systems">Systèmes impactés par l'arrivée des
+                        ordinateurs quantiques</a></li>
                     <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA">Chiffrement RSA</a></li>
-                    <li>
-                      <a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive
-                        RSA</a>
-                    </li>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive
+                        RSA</a></li>
                   </ul>
                 </li>
                 <li class="current_page_item">
-                  <a href="quantum-computers.html">Ordinateurs quantique</a>
+                  <a href="quantum-computers.html">Ordinateurs quantiques</a>
+                  <ul>
+                    <li><a href="quantum-computers.html#qubits">Qubits</a></li>
+                    <li><a href="quantum-computers.html#portes-algorithmes-quantiques">Portes et Algorithmes
+                        quantiques</a></li>
+                    <li><a href="quantum-computers.html#shors-algorithm">Algorithme de Shor</a></li>
+                    <li><a href="quantum-computers.html#quantum-computers-physical-implementation">Ordinateurs
+                        quantiques implémentation physique</a></li>
+                    <li><a href="quantum-computers.html#quantum-computer-architecture">Architecture d'un ordinateur
+                        quantique</a></li>
+                    <li><a href="quantum-computers.html#evolution-risk-quantum-computers">Evolution des ordinateurs
+                        quantiques et prédictions futures</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="new-cryptographic-algorithms.html">Cryptographie post quantique</a>
+                  <ul>
+                    <li><a href="new-cryptographic-algorithms.html#avancees-principales">Avancées</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#criteres-algorithmes-selctionnes">Critères et
+                        algorithmes selectionnés</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#lattice-based-cryptography">Cryptographie à base de
+                        treillis</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#conclusion">Conclusion</a></li>
+                  </ul>
                 </li>
                 <li>
                   <a href="bibliography.html">Bibliographie</a>
@@ -59,8 +85,19 @@
                 <header class="first major">
                   <h2>Ordinateurs Quantiques</h2>
                 </header>
-                <p> Introduction </p>
-                <h3 id="quantum-computers-forces-et-faiblesses">Qubits</h3>
+                <p> Cette section examine le fonctionnement des ordinateurs quantiques et l'application de l'algorithme
+                  de Shor pour résoudre le problème du logarithme discret. Nous examinerons également les aspects
+                  physiques de l'implémentation des ordinateurs quantiques et ferons le point sur les progrès réalisés
+                  jusqu'à présent. Nous aborderons également les estimations concernant le moment où nous pourrions
+                  disposer de suffisamment de puissance de calcul quantique. </p>
+                <p> La conception d'ordinateurs quantiques constitue un enjeu de premier plan pour les entreprises et
+                  les gouvernements. Par exemple, en France, la Direction générale de l'Armement a déclaré en mars 2024
+                  [<a
+                    href="https://www.defense.gouv.fr/dga/actualites/dga-notifie-accords-cadres-aupres-cinq-societes-developpement-dordinateurs-quantiques-universels">DGA</a>]
+                  son intention d'acquérir des ordinateurs quantiques à des fins militaires et collabore avec cinq
+                  start-ups dans ce domaine. En effet, la maîtrise de cette technologie pourrait conférer un avantage
+                  compétitif significatif dans de nombreux secteurs du fait de leur puissance de calcul exponentiel.</p>
+                <h3 id="qubits">Qubits</h3>
                 <p> Les qubits, ou "quantum bits", sont les unités fondamentales de l'information quantique utilisées
                   dans l'informatique quantique. Contrairement aux bits classiques de l'informatique traditionnelle, qui
                   peuvent être soit 0 soit 1, un qubit peut être à la fois 0 et 1 simultanément, grâce à un phénomène
@@ -132,7 +169,8 @@
                   le résultat d'un seul état est obtenu. De ce fait, en pratique l'ordinateur quantique ne peut pas être
                   utilisé dans la majorité des situations. Afin d'obtenir des résultats utiles, il est nécessaire
                   d'opérer avec des algorithmes quantiques spécifiques pour tirer le plus d'informations possible des
-                  qbits [REF quantum algorithms Mosca]. </p>
+                  qbits <strong><a style="text-decoration: none;" href="bibliography.html#biblio_10">[10]</a></strong>.
+                </p>
                 <ol>
                   <p>Pour manipuler des registres de qubits on utilise des portes quantiques, tout comme un ordinateur
                     classique utilise des portes logiques. Ces portes logiques diffèrent beaucoup des portes logiques
@@ -187,7 +225,7 @@
                 </ol>
                 <p> Dans la partie suivante, nous allons voir en détail l'algorithme de Shor, qui repose sur la
                   Transformée de Fourier Quantique.</p>
-                <h3 id="quantum-computers-shors">Algorithme de Shor</h3>
+                <h3 id="shors-algorithm">Algorithme de Shor</h3>
                 <p> L'algorithme qui nous intéresse dans le cadre de la cryptographie quantique, est l'algorithme de
                   Shor qui permet de factoriser un nombre premier en complexité logarithmique/linéaire (au lieu de
                   exponentielle). Comme vu dans la section <a style="text-decoration: none;"
@@ -312,12 +350,15 @@
                 </math> possibilités en une seule fois. Ensuite en effectuant une mesure après passage dans la fonction
                 f, le nouvel état superposé est périodique de periode k. Une transformée de fourier quantique permet de
                 récupérer cette periode k. En pratique, une étude de 2021 montre qu'il faut deux fois ce nombre de
-                qubits, soit 4096 [ref : Quantum attack ressource estimate]. </p>
-                <h3 id="quantum-computers-evolution">Ordinateurs quantiques implémentation physique</h3>
+                qubits, soit 4096 [<a
+                  href="https://research.kudelskisecurity.com/2021/08/24/quantum-attack-resource-estimate-using-shors-algorithm-to-break-rsa-vs-dh-dsa-vs-ecc/">Quantum
+                  attack ressource estimate</a>]. </p>
+                <h3 id="quantum-computers-physical-implementation">Ordinateurs quantiques implémentation physique</h3>
                 <p> Un ordinateur quantique peut être implémenté physiquement par n'importe quel système physique à 2
                   états quantiques : polarisation d'un photon, spin d'un electron, boite quantique... Tant que ce
-                  système vérifier les critères de DiVincenzo [ref DiVincenzo] : possibilité d'initialiser les qubits à
-                  un état basique (cf : <a href="quantum-computers.html#portes-algorithmes-quantiques">porte de
+                  système vérifier les critères de DiVincenzo <strong><a style="text-decoration: none;"
+                      href="bibliography.html#biblio_15">[15]</a></strong> : possibilité d'initialiser les qubits à un
+                  état basique (cf : <a href="quantum-computers.html#portes-algorithmes-quantiques">porte de
                     Hadamard</a>), de mesurer les états quantiques à n'importe quel moment et avoir un temps de
                   cohérence élevé.</p>
                 <p> Dans la pratique, plusieurs entreprises se sont engagées dans le développement d'ordinateurs
@@ -353,9 +394,8 @@
                       relativement faciles à fabriquer grâce à des techniques de microfabrication bien établies.
                       Cependant, pour maintenir leurs propriétés quantiques, ces systèmes nécessitent un refroidissement
                       cryogénique à des températures très basses (proche de 0 Kelvin), ce qui représente un défi
-                      technique majeur dans le déploiement pratique de ces technologies. [ref: Amirhossein Nourbakhsh,
-                      Quantum Computing: Fundamentals, Trends and Perspectives for Chemical and Biochemical Engineers,
-                      Jan. 2022] </p>
+                      technique majeur dans le déploiement pratique de ces technologies. <strong><a
+                          style="text-decoration: none;" href="bibliography.html#biblio_20">[20]</a></strong> </p>
                   </div>
                   <div class="block-tab-22">
                     <h5>Photonique</h5>
@@ -385,9 +425,8 @@
                       quantiques multi-qubits dans les systèmes photoniques reste un défi, en raison de la nature des
                       interactions photoniques et des exigences techniques complexes pour contrôler plusieurs qubits
                       simultanément. Ces défis sont au centre des recherches en cours visant à améliorer les
-                      performances et la polyvalence des ordinateurs quantiques photoniques.[ref: Amirhossein
-                      Nourbakhsh, Quantum Computing: Fundamentals, Trends and Perspectives for Chemical and Biochemical
-                      Engineers, Jan. 2022] </p>
+                      performances et la polyvalence des ordinateurs quantiques photoniques.<strong><a
+                          style="text-decoration: none;" href="bibliography.html#biblio_20">[20]</a></strong> </p>
                   </div>
                   <div class="block-tab-22">
                     <h5>Ions piégés</h5>
@@ -404,7 +443,8 @@
                       l'information quantique est transférée grâce au mouvement collectif quantifié des ions dans un
                       piège partagé. Les principales entreprises qui travaillent dessus sont IonQ et Quantum Factory. En
                       avril 2018, le plus grand nombre de particules entrelacées de manière contrôlée était de 20 ions
-                      piégés. [ref Observation of Entangled States of a Fully Controlled 20-Qubit System].</p>
+                      piégés. <strong><a style="text-decoration: none;"
+                          href="bibliography.html#biblio_17">[17]</a></strong>.</p>
                     <p>En petite dimension, les systèmes à ions piégés sont relativement faciles à implémenter. Cela est
                       dû à leur capacité à confiner et manipuler un petit nombre d'ions avec une grande précision grâce
                       à des techniques de piégeage électromagnétique. De plus, les systèmes à ions piégés présentent
@@ -490,16 +530,16 @@
                 <p>Ainsi les qubits anoncés par les fabricants (comme les 5000 qubits de D-Wave), sont souvent des
                   qubits physiques qui après passage dans des portes quantiques adoptent des comportements innatendus
                   (erreurs, bruits). Ce qui fait qu'aujourd'hui les ordinateurs quantiques sont incapables de tourner
-                  l'algorithme de Shor sur des entiers plus grand que 21 [ref: Pretending to factor large numbers on a
-                  quantum computer]. Pour remédier à ça, plusieurs qubits physiques sont moyennés pour obtenir un qubit
-                  logique. Plus l'algorithme quantique est profond (plus de portails), plus il faudra de qubits
-                  physiques pour avoir un résultat pertinent.</p>
-                <h3 id="evolution-risk-quantum-computers">Evolution des ordinateurs physiques et prédictions futures
+                  l'algorithme de Shor sur des entiers plus grand que 21 <strong><a style="text-decoration: none;"
+                      href="bibliography.html#biblio_11">[11]</a></strong>. Pour remédier à ça, plusieurs qubits
+                  physiques sont moyennés pour obtenir un qubit logique. Plus l'algorithme quantique est profond (plus
+                  de portails), plus il faudra de qubits physiques pour avoir un résultat pertinent.</p>
+                <h3 id="evolution-risk-quantum-computers">Evolution des ordinateurs quantiques et prédictions futures
                 </h3>
                 <p> Avec l'erreur des Qubits physiques en 2021, un article de Craig Gidney et Martin Ekera montre qu'il
                   est nécessaire d'avoir 20 Milions de qubits physiques pour appliquer l'algorithme de Shor sur un
-                  entier de 2048 bits[ref: How to Factor 2048 Bit RSA Integers in 8 Hours Using 20 Million Noisy
-                  Qubits]. </p>
+                  entier de 2048 bits <strong><a style="text-decoration: none;"
+                      href="bibliography.html#biblio_8">[8]</a></strong>. </p>
                 <p>Le nombre de Qubits utilisés par les ordinateurs quantiques ne font qu'augmenter, et la robustesse de
                   ces Qubits ne fais que diminuer. Ces deux évolutions ne s'appliquent pas ensemble, l'ordinateur avec
                   le plus de Qubit n'est pas celui avec le moins d'erreur, par exemple l'ordinateur Quantique Condor

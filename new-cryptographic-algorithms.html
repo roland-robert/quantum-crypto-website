@@ -27,33 +27,45 @@
                 <li>
                   <a href="asymetric-cryptography.html">Cryptographie</a>
                   <ul>
-                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-general-principle">Principe
-                        détaillée de la cryptographie asymétrique</a></li>
+                    <li><a href="asymetric-cryptography.html">Cryptographie: principe général</a></li>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-detailed">Principe détaillé de la
+                        cryptographie asymétrique</a></li>
+                    <li><a href="asymetric-cryptography.html#discrete-log-factorisation">Logarithme discret et
+                        factorisation d'entier</a></li>
+                    <li><a href="asymetric-cryptography.html#impacted-systems">Systèmes impactés par l'arrivée des
+                        ordinateurs quantiques</a></li>
                     <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA">Chiffrement RSA</a></li>
-                    <li>
-                      <a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive
-                        RSA</a>
-                    </li>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive
+                        RSA</a></li>
                   </ul>
                 </li>
                 <li>
-                  <a href="quantum-computers.html">Ordinateurs quantique</a>
+                  <a href="quantum-computers.html">Ordinateurs quantiques</a>
                   <ul>
-                    <li><a href="quantum-computers.html">Principe général</a></li>
-                    <li><a href="#">Magna phasellus</a></li>
-                    <li>
-                      <a href="#">Phasellus consequat</a>
-                      <ul>
-                        <li><a href="#">Lorem ipsum dolor</a></li>
-                        <li><a href="#">Phasellus consequat</a></li>
-                        <li><a href="#">Magna phasellus</a></li>
-                        <li><a href="#">Etiam dolore nisl</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Veroeros feugiat</a></li>
+                    <li><a href="quantum-computers.html#qubits">Qubits</a></li>
+                    <li><a href="quantum-computers.html#portes-algorithmes-quantiques">Portes et Algorithmes
+                        quantiques</a></li>
+                    <li><a href="quantum-computers.html#shors-algorithm">Algorithme de Shor</a></li>
+                    <li><a href="quantum-computers.html#quantum-computers-physical-implementation">Ordinateurs
+                        quantiques implémentation physique</a></li>
+                    <li><a href="quantum-computers.html#quantum-computer-architecture">Architecture d'un ordinateur
+                        quantique</a></li>
+                    <li><a href="quantum-computers.html#evolution-risk-quantum-computers">Evolution des ordinateurs
+                        quantiques et prédictions futures</a></li>
                   </ul>
                 </li>
                 <li class="current_page_item">
+                  <a href="new-cryptographic-algorithms.html">Cryptographie post quantique</a>
+                  <ul>
+                    <li><a href="new-cryptographic-algorithms.html#avancees-principales">Avancées</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#criteres-algorithmes-selctionnes">Critères et
+                        algorithmes selectionnés</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#lattice-based-cryptography">Cryptographie à base de
+                        treillis</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#conclusion">Conclusion</a></li>
+                  </ul>
+                </li>
+                <li>
                   <a href="bibliography.html">Bibliographie</a>
                 </li>
               </ul>
@@ -71,73 +83,203 @@
             <div class="row">
               <div class="col-12">
                 <header class="first major">
-                  <h2>Bibliographie</h2>
+                  <h2>Nouveaux algorithmes de cryptographie et nouveaux standards</h2>
                 </header>
-                <p>
-                <ol>
-                  <li id="biblio_1">
-                    <strong>[1]</strong> Shin, Daniel. “Modern Quantum Information and the Impact of Quantum Computing
-                    on Cryptography.” <i>Bulletin of the American Physical Society</i>, 2024. <a
-                      href="https://meetings.aps.org/Meeting/MAR24/Session/A53.10">https://meetings.aps.org/Meeting/MAR24/Session/A53.10</a>.
+                <p> Le problème avec les algorithmes populaires actuellement utilisés sur le marché est que leur
+                  sécurité repose sur l'un des trois problèmes mathématiques difficiles : le problème de factorisation
+                  d'entiers, le problème du logarithme discret ou le problème du logarithme discret sur courbes
+                  elliptiques (traité dans la partie <a href="asymetric-cryptography.html">cryptographie classique</a>).
+                  Tous ces problèmes pourraient être facilement résolus sur un ordinateur quantique suffisamment
+                  puissant exécutant l'<a href="quantum-computers.html#shors-algorithm">algorithme de Shor</a> ou même
+                  des alternatives plus rapides et moins exigeantes (en termes de nombre de qubits requis). </p>
+                <p> Bien qu'en 2024, les ordinateurs quantiques manquent de puissance de traitement pour casser les
+                  algorithmes cryptographiques largement utilisés, comme vu dans la partie <a
+                    href="quantum-computers.html">ordinateurs quantiques</a>, les cryptographes conçoivent de nouveaux
+                  algorithmes pour se préparer au jour où les algorithmes actuels seront vulnérables aux attaques par
+                  ordinateur quantique. Leur travail a attiré l'attention des universitaires et de l'industrie grâce à
+                  la série de conférences PQCrypto organisée depuis 2006, à plusieurs ateliers sur la cryptographie
+                  quantique sécurisée organisés par l'Institut européen des normes de télécommunications (ETSI), et à
+                  l'Institut d'informatique quantique. L'existence présumée de programmes de collecte massive de données
+                  maintenant dans le but de déchiffrer plus tard est ce qui a poussé le plus les institutions à trouver
+                  et standardiser des nouveaux algorithmes de chiffrement "quantum resistant". </p>
+                <h3 id="avancees-principales">L'avancement face à la menace des ordinateurs quantiques</h3>
+                <p> Le premier réveil face à la menace était lors de la conférence PQCrypto de 2006. Ensuite se sont
+                  enchainé 10 autres conférences PQCrypto, et ce n'est qu'en Septembre 2016 que le NIST (National
+                  Institute of Standards and Technology) participe à la conférence et annonce le début d'un processus
+                  international de recherche, de standardisation et la propagation d'algorithmes de chiffrement
+                  résistant aux ordinateurs quantiques.</p>
+                <div class="figure-centered">
+                  <figure>
+                    <img src="images/post-quantum-algorithms/avancees-principales.png" alt="avancees-principales.png">
+                    <figcaption>Schéma des avancées principales en cryptographie post quantique de 2006 à 2024
+                    </figcaption>
+                  </figure>
+                </div>
+                <p> En décembre 2016 le NIST demande à toute la communauté cryptographique des propositions
+                  d'algorithmes, ils ont reçu 82 soumissions dont 69 soumissions éligibles, le 20 Novembre 2017 (la date
+                  limite). En Janvier 2019, 26 algorithmes sont selectionnés pour une revue plus poussée (17 KEM
+                  (échange de clé) et 9 signatures). En Juin 2020, plus que 15 algorithmes sont sélectionné pour la
+                  finale. Enfin, le 5 Juillet 2022, 4 algorithmes sont selectionnés pour être standardisés, et 4 autres
+                  passent au dernier round. En novembre 2023, un brouillon est publié, définissant les standards pour
+                  ces 4 algorithmes. [<a href="https://csrc.nist.gov/Projects/post-quantum-cryptography/news">NIST
+                    news</a>]</p>
+                <h3 id="criteres-algorithmes-selctionnes">Critères de sélection, et algorithmes selectionnés</h3> Les
+                critères publiés en Décembre 2016 par le NIST pour la sélection des algorithmes peut être divisé en 3
+                parties, dont l'importance est décroissante. [<a
+                  href="https://csrc.nist.gov/csrc/media/projects/post-quantum-cryptography/documents/call-for-proposals-final-dec-2016.pdf">NIST
+                  critères d'évaluation</a>] <ol>
+                  <li class="li-tab">
+                    <strong>Sécurité:</strong> Garantir la résistance contre les attaques en tenant compte des
+                    ressources informatiques disponibles, du temps de calcul, et assurant une confidentialité
+                    persistante malgré l'évolution des algorithmes et des technologies quantiques. Un critère
+                    fondamental est la sécurité face aux ordinateurs classique, les algorithmes soumis seront comparés
+                    aux algorithmes existants sur ce point.
                   </li>
-                  <li id="biblio_2">
-                    <strong>[2]</strong> Buhler, J. P., H. W. Lenstra, et Carl Pomerance. «&nbsp;Factoring Integers with
-                    the Number Field Sieve&nbsp;». In <i>The Development of the Number Field Sieve</i>, édité par Arjen
-                    K. Lenstra et Hendrik W. Lenstra, 50‑94. Lecture Notes in Mathematics. Berlin, Heidelberg: Springer,
-                    1993. <a href="https://doi.org/10.1007/BFb0091539">https://doi.org/10.1007/BFb0091539</a>.
+                  <li class="li-tab">
+                    <strong>Rapidité, taille mémoire et robustesse:</strong> Assurer des opérations de chiffrement,
+                    déchiffrement, signature et génération de clé efficaces en termes de temps et de ressources, tout en
+                    maintenant des tailles de clé, de signature et de ciphertexts raisonnables et en minimisant les taux
+                    d'échec de déchiffrement.
                   </li>
-                  <li id="biblio_3">
-                    <strong>[3]</strong> Obaid, Taleb Samad. «&nbsp;Study A Public Key in RSA Algorithm&nbsp;».
-                    <i>European Journal of Engineering and Technology Research</i> 5, n<sup>o</sup> 4 (1 avril 2020):
-                    395‑98. <a
-                      href="https://doi.org/10.24018/ejeng.2020.5.4.1843">https://doi.org/10.24018/ejeng.2020.5.4.1843</a>.
-                  </li>
-                  <li id="biblio_4">
-                    <strong>[4]</strong> «&nbsp;Using TLS to Protect Data&nbsp;». Consulté le 28 janvier 2024. <a
-                      href="https://www.ncsc.gov.uk/guidance/using-tls-to-protect-data">https://www.ncsc.gov.uk/guidance/using-tls-to-protect-data</a>.
-                  </li>
-                  <li id="biblio_5">
-                    <strong>[5]</strong> Venafi. «&nbsp;What Is an SSL Cipher Suite? | Venafi&nbsp;». Consulté le 28
-                    janvier 2024. <a
-                      href="https://venafi.com/blog/what-are-cipher-suites/">https://venafi.com/blog/what-are-cipher-suites/</a>.
-                  </li>
-                  <li id="biblio_6">
-                    <strong>[6]</strong> Yufei Tao, Correctness proof of RSA <a
-                      href="https://www.cse.cuhk.edu.hk/~taoyf/course/bmeg3120/notes/rsa-proof.pdf">https://www.cse.cuhk.edu.hk/~taoyf/course/bmeg3120/notes/rsa-proof.pdf</a>.
-                  </li>
-                  <li id="biblio_7">
-                    <strong>[7]</strong> Bhatia, Vaishali, et K.R. Ramkumar. “An Efficient Quantum Computing technique
-                    for cracking RSA using Shor’s Algorithm.” In <i>2020 IEEE 5th International Conference on Computing
-                      Communication and Automation (ICCCA)</i>, 89‑94, 2020. <a
-                      href="https://doi.org/10.1109/ICCCA49541.2020.9250806">https://doi.org/10.1109/ICCCA49541.2020.9250806</a>.
-                  </li>
-                  <li id="biblio_8">
-                    <strong>[8]</strong> Gidney, Craig, et Martin Ekerå. “How to Factor 2048 Bit RSA Integers in 8 Hours
-                    Using 20 Million Noisy Qubits.” <i>Quantum</i> 5 (15 avril 2021): 433. <a
-                      href="https://doi.org/10.22331/q-2021-04-15-433">https://doi.org/10.22331/q-2021-04-15-433</a>.
-                  </li>
-                  <li id="biblio_9">
-                    <strong>[9]</strong> “IBM Quantum Computing Blog | IBM Quantum System Two: The Era of Quantum
-                    Utility Is Here.” Consulté le 9 février 2024. <a
-                      href="https://www.ibm.com/quantum/blog/www.ibm.com/quantum/blog/quantum-roadmap-2033">https://www.ibm.com/quantum/blog/www.ibm.com/quantum/blog/quantum-roadmap-2033</a>.
-                  </li>
-                  <li id="biblio_10">
-                    <strong>[10]</strong> Mosca, Michele. “Quantum Algorithms.” arXiv, 3 août 2008. <a
-                      href="https://doi.org/10.48550/arXiv.0808.0369">https://doi.org/10.48550/arXiv.0808.0369</a>.
-                  </li>
-                  <li id="biblio_11">
-                    <strong>[11]</strong> Smolin, John A., Graeme Smith, et Alex Vargo. “Pretending to factor large
-                    numbers on a quantum computer.” <i>Nature</i> 499, n<sup>o</sup> 7457 (juillet 2013): 163‑65. <a
-                      href="https://doi.org/10.1038/nature12290">https://doi.org/10.1038/nature12290</a>.
-                  </li>
-                  <li id="biblio_12">
-                    <strong>[12]</strong> Yan, Bao, Ziqi Tan, Shijie Wei, Haocong Jiang, Weilong Wang, Hong Wang, Lan
-                    Luo, et al. “Factoring integers with sublinear resources on a superconducting quantum processor.”
-                    arXiv, 23 décembre 2022. <a
-                      href="https://doi.org/10.48550/arXiv.2212.12372">https://doi.org/10.48550/arXiv.2212.12372</a>.
+                  <li class="li-tab">
+                    <strong>Flexibilité et simplicité:</strong> Offrir des solutions personnalisables, parallélisables
+                    et dotées d'un design simple pour une intégration aisée dans divers environnements et applications,
+                    tout en répondant aux besoins spécifiques des utilisateurs et en assurant une facilité
+                    d'utilisation.
                   </li>
                 </ol>
-                </p>
+                <p>Les algorithmes passant le processus de sélection sur ces critères sont :</p>
+                <ol>
+                  <li class="li-tab">
+                    <strong>Échange de clé (KEM) - CRYSTALS-Kyber:</strong> Basé sur le principe LEM (Learning With
+                    Errors Key Encapsulation) à base de teillis (Lattice Based), qui consiste à retrouver un vecteur s à
+                    partir de produits scalaires bruités <em>&lt;a, (s + e)&gt;</em> sur un ensemble A bien défini.
+                    <strong><a style="text-decoration: none;" href="bibliography.html#biblio_13">[13]</a></strong>
+                  </li>
+                  <li class="li-tab">
+                    <strong>Signature - CRYSTALS-Dilithium:</strong> Utilise une approche à base de treillis (Lattice
+                    Based), offrant une signature numérique robuste et sécurisée.
+                  </li>
+                  <li class="li-tab">
+                    <strong>Signature - Falcon:</strong> Signature à base de treillis (Lattice Based). Similaire à
+                    CRYSALS-Dilithium, Falcon génère des signatures plus lentement que Dilithium, mais permet une
+                    vérification de signature plus rapide.
+                  </li>
+                  <li class="li-tab">
+                    <strong>Signature - SPHINCS+:</strong> Basé sur des fonctions de hachage, offrant une solution de
+                    signature robuste et résistante aux attaques.
+                  </li>
+                </ol>
+                <h3 id="lattice-based-cryptography">Cryptographie à base de treillis</h3>
+                <p>Sur les 4 algorithmes sélectionnés, 3 utilisent une approche à base de treillis. Les anciennes
+                  méthodes de cryptographie se placent dans des groupes comme celui des entiers ou celui des courbes
+                  élliptiques et utilisent la complexité exponentielle du logarithme discret ou la factorisation
+                  d'entiers pour chiffrer les messages, comme vu en <a href="asymetric-cryptography.html">Partie 1</a>.
+                  A présent la nouvelle approche consiste à se placer dans un espace véctoriel de dimension élevé. Pour
+                  illustrer le fonctionnement on se placera dans un espace de dimension 2 mais la dimension réelle
+                  utilisée pour les nouveaux algorithmes de cryptographie se rapproche de 1000</p>
+                <div class="figure-centered">
+                  <figure>
+                    <img src="images/post-quantum-algorithms/lattice-based-illustration.png" alt="lattice-based.png">
+                    <figcaption>Schéma servant d'illustration de l'approche à base de treillis en 2D, <a
+                        href="https://thijs.com/docs/lec1.pdf">Thijs Laarhoven, Laticed based cryptogrphy, 2015</a>
+                    </figcaption>
+                  </figure>
+                </div> Le couple clé privé, clé publique est obtenu de la façon suivante : <ol>
+                  <li class="li-tab"><strong>Clé privé et création du quadrillage :</strong> Choisir une base de
+                    l'espace véctoriel relativement simple (vecteurs petits et presques orthogonales). Cette base de
+                    vecteurs défini un quadrillage correspondant à l'ensemble des points qui peuvent être atteints par
+                    une combinaisons linéaire entière des vecteurs de la base. Dans l'illustration, cette base est
+                    constituée de deux vecteurs r1 et r2. </li>
+                  <li class="li-tab">
+                    <strong>Clé publique déduite :</strong> On choisit alors une seconde base de l'espace vectoriel
+                    moins "intuitive". Cette nouvelle base doit définir le même quadrillage, donc chaque vecteur de la
+                    base doit être une combinaison entière des vecteurs de la clé privée. La manière dont cette nouvelle
+                    base est créée fait que les vecteurs qui la composent sont plus grands et moins orthogonales. Dans
+                    l'illustration, cette nouvelle base est consituté de deux vecteurs b1 et b2.
+                  </li>
+                </ol> La clé publique (b1, b2) est ensuite partagé au monde. L'envoi de message chiffré se fait alors de
+                la manière suivante : <ol>
+                  <li class="li-tab"><strong>Transformation du message en vecteur : </strong> Le message à envoyer est
+                    initialement du texte qui peut facilement être transformé en un entier m (utf-8, ascii...). L'entier
+                    m peut alors facilement être transformé en vecteur "entier" de manière réversible une utilisant une
+                    bijection de <math display="inline" class="tml-display" style="display:block math;">
+                      <mrow>
+                        <mi>ℕ</mi>
+                        <mo stretchy="false">→</mo>
+                        <msup>
+                          <mi>ℕ</mi>
+                          <mi>k</mi>
+                        </msup>
+                      </mrow>
+                    </math> par exemple la <a href="https://fr.wikipedia.org/wiki/Fonction_de_couplage"> de couplage de
+                      Cantor</a> peut être utilisé. Dans l'illustration dimension 2, nous avons à présent un tuple
+                    d'entier (m1, m2) équivalent au message.</li>
+                  <li class="li-tab"><strong>Transformation du vecteur en point bruité sur quadrillage :</strong> Le
+                    message peut alors être représenté sur le quadrillage par : <math display="inline"
+                      class="tml-display" style="display:block math;">
+                      <mrow>
+                        <mover>
+                          <mi>v</mi>
+                          <mo stretchy="true" style="math-style:normal;math-depth:0;">→</mo>
+                        </mover>
+                        <mo>=</mo>
+                        <mo movablelimits="false">∑</mo>
+                        <msub>
+                          <mi>m</mi>
+                          <mi>i</mi>
+                        </msub>
+                        <mover>
+                          <msub>
+                            <mi>b</mi>
+                            <mi>i</mi>
+                          </msub>
+                          <mo stretchy="true" style="math-style:normal;math-depth:0;">→</mo>
+                        </mover>
+                      </mrow>
+                    </math>, à ce vecteur message obtenu, pour le chiffrer on ajoute un bruit aléatoire (le message
+                    chiffré ne sera plus sur le quadrillage) <math display="inline" class="tml-display"
+                      style="display:block math;">
+                      <mrow>
+                        <mover>
+                          <mi>c</mi>
+                          <mo stretchy="true" style="math-style:normal;math-depth:0;">→</mo>
+                        </mover>
+                        <mo>=</mo>
+                        <mover>
+                          <mi>v</mi>
+                          <mo stretchy="true" style="math-style:normal;math-depth:0;">→</mo>
+                        </mover>
+                        <mo>+</mo>
+                        <mover>
+                          <mi>e</mi>
+                          <mo stretchy="true" style="math-style:normal;math-depth:0;">→</mo>
+                        </mover>
+                      </mrow>
+                    </math>. Ce bruit suit souvent une loi normale d'écart type assez faible, pour que v soit le point
+                    du quadrillage le plus proche de c (le message chiffré) de sorte que le message initiale puisse être
+                    retrouvé par le propriétaire de la clé privée. Il faut noter, que parfois le message ne peut pas
+                    être déchiffrer si le bruit est trop élevé par malchance !</li>
+                </ol> Le message c est ensuite envoyé au destinataire. Le vecteur v peut être facilement retrouvé à
+                partir de la clé privée (r1, r2) grace aux propriétés que cette base initiale vérifie. Cependant pour
+                retrouver v à partir de la clé publique, il faudra une complexité bien plus élevée. Les démonstrations
+                ainsi que le principe sous-jacent du "Learning With Errors" utilisé par CRYSTALS-Kyber sont présentés
+                dans la thèse de Frederico Bergami <strong><a style="text-decoration: none;"
+                    href="bibliography.html#biblio_13">[13]</a></strong>. <h3 id="conclusion">Conclusion</h3>
+                <p> La menace que représentent les ordinateurs quantiques constitue un enjeu critique. Comme évoqué dans
+                  la section sur la <a href="asymetric-cryptography.html">cryptographie</a>, la plupart des algorithmes
+                  de chiffrement asymétriques et de signatures reposent sur des principes mathématiques tels que le
+                  logarithme discret et la factorisation d'entiers (utilisés notamment dans HTTPS, les cryptomonnaies et
+                  les signatures de logiciels).<br> Cependant, comme exposé dans la section sur les <a
+                    href="asymetric-cryptography.html">ordinateurs quantiques</a>, ces derniers ont le potentiel de
+                  compromettre les algorithmes de chiffrement actuels. Les avancées significatives dans le nombre de
+                  qubits et la réduction des erreurs des ordinateurs quantiques sont en cours, avec de nombreuses
+                  entreprises et gouvernements investissant massivement dans ce domaine (IBM, Google, Direction Général
+                  de l'Armement...). Il est prévu que d'ici 2030, le chiffrement largement utilisé actuellement sera
+                  obsolète, bien que cela reste à confirmer.<br> Pour anticiper cette menace, de nouveaux algorithmes
+                  sont en cours de développement, certains étant déjà en phase de standardisation et d'utilisation. Par
+                  exemple, l'application de messagerie Signal a récemment annoncé l'adoption de CRYSTALS-Kyber pour son
+                  chiffrement de bout en bout [<a href="https://signal.org/blog/pqxdh/">Signal</a>]. </p>
           </section>
         </div>
       </div>

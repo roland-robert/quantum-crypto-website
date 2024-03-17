@@ -25,19 +25,45 @@
                   <a href="index.html">Home</a>
                 </li>
                 <li class="current_page_item">
-                  <a href="#">Cryptographie</a>
+                  <a href="asymetric-cryptography.html">Cryptographie</a>
                   <ul>
-                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-general-principle">Principe
-                        détaillée de la cryptographie asymétrique</a></li>
+                    <li><a href="asymetric-cryptography.html">Cryptographie: principe général</a></li>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-detailed">Principe détaillé de la
+                        cryptographie asymétrique</a></li>
+                    <li><a href="asymetric-cryptography.html#discrete-log-factorisation">Logarithme discret et
+                        factorisation d'entier</a></li>
+                    <li><a href="asymetric-cryptography.html#impacted-systems">Systèmes impactés par l'arrivée des
+                        ordinateurs quantiques</a></li>
                     <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA">Chiffrement RSA</a></li>
-                    <li>
-                      <a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive
-                        RSA</a>
-                    </li>
+                    <li><a href="asymetric-cryptography.html#asymetric-cryptography-RSA-game">Simulation intéractive
+                        RSA</a></li>
                   </ul>
                 </li>
                 <li>
-                  <a href="quantum-computers.html">Ordinateurs quantique</a>
+                  <a href="quantum-computers.html">Ordinateurs quantiques</a>
+                  <ul>
+                    <li><a href="quantum-computers.html#qubits">Qubits</a></li>
+                    <li><a href="quantum-computers.html#portes-algorithmes-quantiques">Portes et Algorithmes
+                        quantiques</a></li>
+                    <li><a href="quantum-computers.html#shors-algorithm">Algorithme de Shor</a></li>
+                    <li><a href="quantum-computers.html#quantum-computers-physical-implementation">Ordinateurs
+                        quantiques implémentation physique</a></li>
+                    <li><a href="quantum-computers.html#quantum-computer-architecture">Architecture d'un ordinateur
+                        quantique</a></li>
+                    <li><a href="quantum-computers.html#evolution-risk-quantum-computers">Evolution des ordinateurs
+                        quantiques et prédictions futures</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="new-cryptographic-algorithms.html">Cryptographie post quantique</a>
+                  <ul>
+                    <li><a href="new-cryptographic-algorithms.html#avancees-principales">Avancées</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#criteres-algorithmes-selctionnes">Critères et
+                        algorithmes selectionnés</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#lattice-based-cryptography">Cryptographie à base de
+                        treillis</a></li>
+                    <li><a href="new-cryptographic-algorithms.html#conclusion">Conclusion</a></li>
+                  </ul>
                 </li>
                 <li>
                   <a href="bibliography.html">Bibliographie</a>
@@ -112,8 +138,7 @@
                   suscitent un intérêt particulier. Ces deux méthodes reposent souvent sur les mêmes concepts
                   mathématiques, qui sont à risque de devenir inefficaces après l'arrivée des ordinateurs quantiques.
                 </p>
-                <h3 id="asymetric-cryptography-detailed">Principe détaillé de la cryptographie asymétrique
-                </h3>
+                <h3 id="asymetric-cryptography-detailed">Principe détaillé de la cryptographie asymétrique </h3>
                 <p> Deux partis souhaitent communiquer secrètement. Cependant n'importe qui peut intercepter ce qu'ils
                   envoient, comme c'est souvent le cas en ligne. C'est pourquoi, une méthode de cryptographie symétrique
                   ne peut pas être suffisant car ils n'ont pas de moyen sécuriser de se partager une clé commune. <br>
@@ -163,10 +188,10 @@
                   </math><br> Il est alors très simple de déduire le message M de S en chiffrant S avec la clé publique
                   2, mais il faut posséder la clé privée 2 pour déduire S de M, garantissant ainsi l'origine du message.
                   <br>
-                <h3 id="discrete-log-factorisation">Logarithme discret et factorisation d'entier: pilliers
-                  de la majorité des algorithmes asymétriques. </h3> La grande majorité des algorithmes asymétriques
-                actuels reposent sur la difficulté à résoudre le logarithme discret et la factorisation d'entiers. (RSA,
-                DHKE, ElGamal, ECC, ECDH, DSA) <div class="container-tab-22">
+                <h3 id="discrete-log-factorisation">Logarithme discret et factorisation d'entier: pilliers de la
+                  majorité des algorithmes asymétriques. </h3> La grande majorité des algorithmes asymétriques actuels
+                reposent sur la difficulté à résoudre le logarithme discret et la factorisation d'entiers. (RSA, DHKE,
+                ElGamal, ECC, ECDH, DSA) <div class="container-tab-22">
                   <div class="block-tab-22">
                     <h5>Factorisation d'entier</h5>
                     <div class="vertical-aligned-figures">
@@ -192,8 +217,8 @@
                       bien choisi. Il est souvent nécéssaire d'essayer tous les k possibles jusqu'à obtenir le résultat.
                       La difficulté à résoudre le problème du logarithme discret est utilisé par de nombreux algorithme
                       d'échange de clé (key encapsulation), dont la majorité se basent sur le Diffie-Hellman key
-                      exchange. [ref On the complexity of the discrete logarithm and Diffie–Hellman problems Ian F.
-                      Blake a, and Theo Garefalakis b] </p>
+                      exchange. <strong><a style="text-decoration: none;"
+                          href="bibliography.html#biblio_14">[14]</a></strong> </p>
                   </div>
                 </div>
                 <p>Avec l'arrivée des ordinateurs quantiques, ces problèmes pourront être résolus en complexité
@@ -203,27 +228,28 @@
                 <p>La liste des systèmes utilisant des algorithme d'échange de clé ou de signature basé sur les deux
                   principes ci-dessus sont très nombreux.
                 <ol>
-                  <li><strong>HTTPS/TLS</strong> : D'après la documentation officielle des spécification TLS 1.3 [ref
-                    The Transport Layer Security (TLS) Protocol Version 1.3], l'échange de clé entre le client et le
-                    serveur doit se faire utilisant les algorithme DHE (Diffie-Hellman classique, groupe des entiers),
-                    ECDHE (Diffi-Hellman Courbe Elliptique) et la signature doit se faire utilisant le RSA ou le ECDHA.
-                    Ces trois algorithmes seront obsolète à l'arrivée des ordinateurs quantiques.</li><br>
+                  <li><strong>HTTPS/TLS</strong> : D'après la documentation officielle des spécification TLS 1.3
+                    <strong><a style="text-decoration: none;" href="bibliography.html#biblio_21">[21]</a></strong>,
+                    l'échange de clé entre le client et le serveur doit se faire utilisant les algorithme DHE
+                    (Diffie-Hellman classique, groupe des entiers), ECDHE (Diffi-Hellman Courbe Elliptique) et la
+                    signature doit se faire utilisant le RSA ou le ECDHA. Ces trois algorithmes seront obsolète à
+                    l'arrivée des ordinateurs quantiques.</li><br>
                   <li><strong>Signatures de logiciels ou d'applications</strong> : la majorité des éditeurs signent
                     leurs logiciels (leurs clés publiques sont répertoriés), permettant ainsi à Windows, Google Play ou
                     Apple de certifier l'authenticité d'executables, baissant la garde des systèmes de controles des
                     appareils concernés. Ces signatures utilisent majoritairement le DSA (Digital Signature Algorithm),
                     basé sur le logarithme discret.</li><br>
                   <li><strong>Cryptomonaies</strong>: les transactions sont effectués sur la base de signature (le
-                    donneur d'argent doit signer la transaction), le bitcoin utilise le ECDSA [ref Elliptic Curve
-                    Digital Signature Algorithm - Bitcoin Wiki]. Il sera donc nécessaire de changer cet algorithme dans
-                    un futur proche, par le biais d'un vote. </li><br>
+                    donneur d'argent doit signer la transaction), le bitcoin utilise le ECDSA <strong><a
+                        style="text-decoration: none;" href="bibliography.html#biblio_16">[16]</a></strong>. Il sera
+                    donc nécessaire de changer cet algorithme dans un futur proche, par le biais d'un vote. </li><br>
                   <li><strong>SSH (Secure Shell)</strong>: pour se connecter à un appareil à distance ou son compte
                     github, le protocol SSH est majoritairement utilisé. Tout comme le système TLS, le système SSH
                     utilise aussi des algorithmes à risque pour les échanges de clé. </li><br>
                   <li><strong>E2EE (End to End Encryption)</strong>: cette méthode est utilisé lors de la communication
                     directe avec un parti, les applications les plus connues sont WhatsApp, Signal ou Télégram. Signal
                     est l'exception, a récemment changé sont algorithmes de chiffrement pour être robuste aux attaques
-                    d'un ordinateur quantique [ref Quantum Resistance and the Signal Protocol].</li>
+                    d'un ordinateur quantique <strong><a style="text-decoration: none;" href="bibliography.html#biblio_22">[22]</a></strong>.</li>
                 </ol> Le plus grand risque concerne les messages confidentiels long termes, qui peuvent être stocké pour
                 être déchiffrés plus tard. </p>
                 <h3 id="asymetric-cryptography-RSA">Chiffrement RSA </h3> Le chiffrement RSA est l'exemple le plus
